@@ -1,0 +1,7 @@
+{
+  "name": "proyect-peli",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
