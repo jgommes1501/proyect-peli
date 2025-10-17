@@ -1,20 +1,28 @@
+<!-- La cabecera principal, visible en la parte superior de la pantalla -->
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Lista de Peliculas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Esta segunda cabecera crea el efecto de título grande que se encoge al hacer scroll -->
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Lista de peliculas</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- 
+    Directiva *ngFor: este es el bucle. 
+    - Por cada objeto 'tarea' que haya en el array 'listaDeTareas'...
+    - ...Angular creará una instancia de nuestro componente <app-task-item>.
+  -->
+  <app-listpeli
+    *ngFor="let p of listaDePeliculas"
+    [peliculas]="p"> <!-- Property Binding: le pasamos el objeto 'tarea' actual al @Input del componente hijo -->
+  </app-listpeli>
+  
 </ion-content>
