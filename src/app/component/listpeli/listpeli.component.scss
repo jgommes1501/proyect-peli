@@ -1,0 +1,12 @@
+/* Animación suave para el hover */
+ion-card {
+  /* Le decimos que cualquier cambio en la propiedad 'transform' dure 0.2 segundos */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Cuando el ratón está encima de la tarjeta (:hover) */
+ion-card:hover {
+  /* La hacemos un 2% más grande */
+  transform: scale(1.02);
+  cursor: pointer;
+}

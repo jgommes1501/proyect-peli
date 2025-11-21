@@ -4,7 +4,9 @@ import { IonicModule } from '@ionic/angular';
 import { Peliculas } from 'src/app/interface/peliculas';
 // 1. Importamos las herramientas para gestos
 import { GestureController, Gesture } from '@ionic/angular/standalone';
-
+// 2. Importamos las herramientas para animaciones
+import { AnimationController, Animation } from '@ionic/angular/standalone';
+  
 @Component({
   selector: 'app-listpeli',
   standalone: true,
@@ -15,15 +17,30 @@ import { GestureController, Gesture } from '@ionic/angular/standalone';
 export class ListpeliComponent implements AfterViewInit {
   @Input() peliculas!: Peliculas;
   @Output() eliminar = new EventEmitter<Peliculas>();
-  // 2. Obtenemos una referencia al elemento #card del HTML
+  // 3. Obtenemos una referencia al elemento #card del HTML
   @ViewChild('card', { read: ElementRef }) card!: ElementRef;
+  private animacion!: Animation;
 
-  // 3. Inyectamos el GestureController
-  constructor(private gestureCtrl: GestureController) { }
+  // 4. Inyectamos el GestureController y AnimationController
+  constructor(
+    private gestureCtrl: GestureController,
+    private animationCtrl: AnimationController
+  ) { }
 
-  // 4. Este método se ejecuta cuando la vista ya está lista
+  // 5. Este método se ejecuta cuando la vista ya está lista
   ngAfterViewInit() {
-    // 5. Creamos el gesto
+    // Creamos la animación de aparición
+    this.animacion = this.animationCtrl
+      .create()
+      .addElement(this.card.nativeElement)
+      .duration(600)
+      .fromTo('transform', 'translateY(50px)', 'translateY(0px)')
+      .fromTo('opacity', '0', '1');
+    
+    // Ejecutamos la animación
+    this.animacion.play();
+
+    // Creamos el gesto de deslizar para eliminar
     const gesture: Gesture = this.gestureCtrl.create({
       el: this.card.nativeElement, // El elemento al que se aplica el gesto
       gestureName: 'swipe-delete',
