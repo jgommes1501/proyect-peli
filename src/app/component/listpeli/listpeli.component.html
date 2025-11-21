@@ -1,10 +1,18 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>{{peliculas.nombre}}</ion-card-title>
-    <ion-card-subtitle>{{peliculas.autor}}</ion-card-subtitle>
-  </ion-card-header>
+<!-- Añadimos #card para poder referenciar este elemento desde el archivo .ts -->
+<ion-card #card style="width: 100%;">
+  <ion-card-content class="ion-text-center">
+    <img
+      [src]="peliculas.img"
+      [alt]="peliculas.nombre"
+      style="width: 80%; max-width: 150px; margin: 0 auto 8px auto; display: block; border-radius: 12px;"
+    />
 
-  <ion-card-content>
-    {{peliculas.descripcion}}
+    <ion-card-title color="primary">{{ peliculas.nombre }}</ion-card-title>
+    <ion-card-subtitle>{{ peliculas.autor }}</ion-card-subtitle>
+    <p style="margin-top: 8px;">{{ peliculas.descripcion }}</p>
+
+    <ion-button color="primary" size="small" style="margin-top: 8px;">
+      Ver más
+    </ion-button>
   </ion-card-content>
 </ion-card>

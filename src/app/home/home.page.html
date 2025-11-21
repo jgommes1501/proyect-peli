@@ -1,28 +1,89 @@
-<!-- La cabecera principal, visible en la parte superior de la pantalla -->
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Lista de Peliculas
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title><ion-icon name="film-outline"></ion-icon> Lista de Películas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- Esta segunda cabecera crea el efecto de título grande que se encoge al hacer scroll -->
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Lista de peliculas</ion-title>
+      <ion-title size="large">Lista de Películas</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- 
-    Directiva *ngFor: este es el bucle. 
-    - Por cada objeto 'tarea' que haya en el array 'listaDeTareas'...
-    - ...Angular creará una instancia de nuestro componente <app-task-item>.
-  -->
-  <app-listpeli
-    *ngFor="let p of listaDePeliculas"
-    [peliculas]="p"> <!-- Property Binding: le pasamos el objeto 'tarea' actual al @Input del componente hijo -->
-  </app-listpeli>
-  
+  <!-- SECCIÓN DE CARGA (SKELETON) -->
+  <div *ngIf="cargando" style="padding: 16px;">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" *ngFor="let item of skeletonArray">
+          <ion-card>
+            <ion-skeleton-text animated style="height: 200px; border-radius: 12px;"></ion-skeleton-text>
+            <ion-card-content>
+              <ion-skeleton-text animated style="width: 80%; margin: 8px auto;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 60%; margin: 4px auto;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 100%; margin: 8px auto 4px;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 90%; margin: 4px auto;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 70%; height: 32px; margin: 8px auto; border-radius: 20px;"></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- SECCIÓN DE CONTENIDO REAL -->
+  <div *ngIf="!cargando">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Añadir Película 🎬</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-input
+          label="Nombre"
+          label-placement="floating"
+          [(ngModel)]="nuevaPelicula.nombre">
+        </ion-input>
+
+        <ion-input
+          label="Autor"
+          label-placement="floating"
+          [(ngModel)]="nuevaPelicula.autor">
+        </ion-input>
+
+        <ion-textarea
+          label="Descripción"
+          label-placement="floating"
+          [(ngModel)]="nuevaPelicula.descripcion">
+        </ion-textarea>
+
+        <ion-input
+          label="URL de imagen"
+          label-placement="floating"
+          [(ngModel)]="nuevaPelicula.img">
+        </ion-input>
+
+        <ion-button expand="block" class="ion-margin-top" color="primary" (click)="agregarPelicula()">
+          Añadir Película
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" *ngFor="let p of listaDePeliculas">
+          <app-listpeli [peliculas]="p" (eliminar)="eliminarPelicula($event)"></app-listpeli>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
+<!-- BOTÓN FLOTANTE ABAJO A LA DERECHA -->
+<ion-fab slot="fixed" horizontal="end" vertical="bottom">
+  <!-- Botón principal -->
+  <ion-fab-button color="primary" (click)="mostrarInformacionFormulario()">
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-fab-button>
+
+</ion-fab>

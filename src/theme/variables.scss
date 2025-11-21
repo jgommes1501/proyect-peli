@@ -1,2 +1,42 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+  /** primary **/
+  --ion-color-primary: #f48c06;
+  --ion-color-primary-rgb: 244, 140, 6;
+  --ion-color-primary-contrast: #d77b05;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #d77b05;
+  --ion-color-primary-tint: #f5981f;
+
+  /** secondary **/
+  --ion-color-primary: #f48c06;
+  --ion-color-primary-rgb: 244, 140, 6;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #d77b05;
+  --ion-color-primary-tint: #f5981f;
+ --ion-font-family: "Quintessential", serif;
+
+ /* Colores de fondo */
+  --ion-background-color: #ffffff;
+    --ion-background-color-rgb: 18,18,18;
+
+@media (prefers-color-scheme: dark) {
+    /* ... otros colores ... */
+
+    /* Nuestro color primario, pero en un tono más suave para el modo oscuro */
+    --ion-color-primary: #ffac41;
+    --ion-color-primary-rgb: 255, 172, 65;
+    --ion-color-primary-contrast: #000000;
+    --ion-color-primary-contrast-rgb: 0, 0, 0;
+    --ion-color-primary-shade: #e09839;
+    --ion-color-primary-tint: #ffb554;
+    
+    /* También es una buena práctica cambiar los colores de fondo y texto */
+    --ion-background-color: #121212;
+    --ion-background-color-rgb: 18,18,18;
+
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255,255,255;
+    
+  }
+}

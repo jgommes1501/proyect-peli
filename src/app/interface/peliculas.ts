@@ -3,4 +3,6 @@ export interface Peliculas {
     descripcion: string;
     autor: string;
     id: number;
+    img: string;
+
 }
