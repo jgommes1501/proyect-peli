@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { RouterLink } from '@angular/router';
 import { Peliculas } from 'src/app/interface/peliculas';
 // 1. Importamos las herramientas para gestos
 import { GestureController, Gesture } from '@ionic/angular/standalone';
@@ -10,7 +11,7 @@ import { AnimationController, Animation } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-listpeli',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonicModule, RouterLink],
   templateUrl: './listpeli.component.html',
   styleUrls: ['./listpeli.component.scss']
 })

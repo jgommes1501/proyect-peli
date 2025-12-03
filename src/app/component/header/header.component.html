@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      <div class="header-content">
+        <ion-icon name="film-outline" class="header-icon"></ion-icon>
+        <div class="header-text">
+          <span class="main-title">{{ titulo | uppercase }}</span>
+          <span class="subtitle">{{ subtitulo }}</span>
+        </div>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/about" routerDirection="forward">
+        <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

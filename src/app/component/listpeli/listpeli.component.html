@@ -7,11 +7,11 @@
       style="width: 80%; max-width: 150px; margin: 0 auto 8px auto; display: block; border-radius: 12px;"
     />
 
-    <ion-card-title color="primary">{{ peliculas.nombre }}</ion-card-title>
+    <ion-card-title color="primary">{{ peliculas.nombre | uppercase }}</ion-card-title>
     <ion-card-subtitle>{{ peliculas.autor }}</ion-card-subtitle>
     <p style="margin-top: 8px;">{{ peliculas.descripcion }}</p>
 
-    <ion-button color="primary" size="small" style="margin-top: 8px;">
+    <ion-button [routerLink]="['/detalle-tarea', peliculas.id]" routerDirection="forward" color="primary" size="small" style="margin-top: 8px;">
       Ver más
     </ion-button>
   </ion-card-content>
