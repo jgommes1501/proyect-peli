@@ -232,7 +232,6 @@ export class PeliculasService {
       img: "assets/images/renacido.jpg"
     }
   ];
-
   constructor() { }
 
   /**

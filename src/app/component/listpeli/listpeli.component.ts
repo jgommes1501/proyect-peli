@@ -16,7 +16,7 @@ import { AnimationController, Animation } from '@ionic/angular/standalone';
   styleUrls: ['./listpeli.component.scss']
 })
 export class ListpeliComponent implements AfterViewInit {
-  @Input() peliculas!: Peliculas;
+  @Input() peliculas: Peliculas | undefined;
   @Output() eliminar = new EventEmitter<Peliculas>();
   // 3. Obtenemos una referencia al elemento #card del HTML
   @ViewChild('card', { read: ElementRef }) card!: ElementRef;
@@ -30,6 +30,11 @@ export class ListpeliComponent implements AfterViewInit {
 
   // 5. Este método se ejecuta cuando la vista ya está lista
   ngAfterViewInit() {
+    // Solo ejecutamos las animaciones si tenemos datos
+    if (!this.peliculas) {
+      return;
+    }
+
     // Creamos la animación de aparición
     this.animacion = this.animationCtrl
       .create()

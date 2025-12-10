@@ -11,8 +11,8 @@
   <!-- SECCIÓN DE CARGA (SKELETON) -->
   <div *ngIf="cargando" style="padding: 16px;">
     <ion-grid>
-      <ion-row>
-        <ion-col size="3" *ngFor="let item of skeletonArray">
+      <ion-row class="ion-justify-content-center ion-align-items-stretch">
+        <ion-col size="6" size-md="3" *ngFor="let item of skeletonArray">
           <ion-card>
             <ion-skeleton-text animated style="height: 200px; border-radius: 12px;"></ion-skeleton-text>
             <ion-card-content>
@@ -66,9 +66,19 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col size="3" *ngFor="let p of listaDePeliculas">
+    <!-- Mensaje cuando no hay películas -->
+    <ion-card *ngIf="listaDePeliculas.length === 0" class="ion-text-center">
+      <ion-card-content>
+        <ion-icon name="film-outline" size="large" color="medium"></ion-icon>
+        <h2>No hay películas disponibles</h2>
+        <p>Agrega tu primera película usando el formulario de arriba</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Grid de películas -->
+    <ion-grid *ngIf="listaDePeliculas.length > 0">
+      <ion-row class="ion-justify-content-center ion-align-items-stretch">
+        <ion-col size="6" size-md="3" *ngFor="let p of listaDePeliculas">
           <app-listpeli [peliculas]="p" (eliminar)="eliminarPelicula($event)"></app-listpeli>
         </ion-col>
       </ion-row>

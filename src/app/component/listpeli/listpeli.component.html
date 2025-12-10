@@ -1,18 +1,28 @@
 <!-- Añadimos #card para poder referenciar este elemento desde el archivo .ts -->
-<ion-card #card style="width: 100%;">
-  <ion-card-content class="ion-text-center">
-    <img
-      [src]="peliculas.img"
-      [alt]="peliculas.nombre"
-      style="width: 80%; max-width: 150px; margin: 0 auto 8px auto; display: block; border-radius: 12px;"
-    />
+<!-- Usamos *ngIf para mostrar el contenido solo si peliculas existe -->
+<ion-card #card *ngIf="peliculas" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+  <ion-card-content class="ion-text-center ion-justify-content-between" style="display: flex; flex-direction: column; flex: 1;">
+    <div class="ion-align-items-center" style="display: flex; flex-direction: column;">
+      <img
+        [src]="peliculas.img"
+        [alt]="peliculas.nombre"
+        style="width: 80%; max-width: 150px; margin: 0 auto 8px auto; display: block; border-radius: 12px;"
+      />
 
-    <ion-card-title color="primary">{{ peliculas.nombre | uppercase }}</ion-card-title>
-    <ion-card-subtitle>{{ peliculas.autor }}</ion-card-subtitle>
-    <p style="margin-top: 8px;">{{ peliculas.descripcion }}</p>
+      <ion-card-title color="primary">{{ peliculas.nombre | uppercase }}</ion-card-title>
+      <ion-card-subtitle>{{ peliculas.autor }}</ion-card-subtitle>
+      <p style="margin-top: 8px;">{{ peliculas.descripcion }}</p>
+    </div>
 
-    <ion-button [routerLink]="['/detalle-tarea', peliculas.id]" routerDirection="forward" color="primary" size="small" style="margin-top: 8px;">
+    <ion-button [routerLink]="['/detalle-tarea', peliculas.id]" routerDirection="forward" color="primary" size="small" style="margin-top: auto;">
       Ver más
     </ion-button>
+  </ion-card-content>
+</ion-card>
+
+<!-- Mensaje alternativo cuando no hay datos -->
+<ion-card *ngIf="!peliculas" style="width: 100%; height: 100%;">
+  <ion-card-content class="ion-text-center">
+    <p>No hay datos disponibles</p>
   </ion-card-content>
 </ion-card>
