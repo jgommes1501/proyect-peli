@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'; // 1. Importamos Storage
-
+import { HttpClient } from '@angular/common/http'; // 1. Importar HttpClient
+import { firstValueFrom } from 'rxjs';             // 1. Importar utilidad para Promesas
 @Injectable({
   providedIn: 'root'
 })

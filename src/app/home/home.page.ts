@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, ToastController, AlertController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -6,8 +6,8 @@ import { RouterLink } from '@angular/router';
 import { ListpeliComponent } from '../component/listpeli/listpeli.component';
 import { HeaderComponent } from '../component/header/header.component';
 import { Peliculas } from '../interface/peliculas';
-import { PeliculasService } from '../services/peliculas'; // ¡Importante!
-import { SettingsService } from '../services/settings.service'; // Importar SettingsService
+import { PeliculasService } from '../services/peliculas';
+import { SettingsService } from '../services/settings.service';
 import { addIcons } from 'ionicons';
 import { filmOutline, settingsOutline } from 'ionicons/icons';
 
@@ -18,12 +18,12 @@ import { filmOutline, settingsOutline } from 'ionicons/icons';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   // --- Control de estado de carga ---
   cargando: boolean = true;
-  skeletonArray = Array(31); // Array para generar 31 skeletons
-  saludoUsuario: string = 'Hola'; // Saludo personalizado
+  skeletonArray = Array(31);
+  saludoUsuario: string = 'Hola';
 
   // --- Variables del formulario ---
   nuevaPelicula: Peliculas = {
@@ -34,45 +34,49 @@ export class HomePage implements OnInit {
     img: ''
   };
   
-  // Ya no definimos la lista aquí con datos.
-  // Esta propiedad guardará la lista de películas QUE NOS DE EL SERVICIO
   public listaDePeliculas: Peliculas[] = [];
   
-  // Inyectamos el servicio
   constructor(
     private toastController: ToastController,
     private alertController: AlertController,
-    private peliculasService: PeliculasService, // Inyección de dependencias
-    private settingsService: SettingsService // Inyectar SettingsService
+    private peliculasService: PeliculasService,
+    private settingsService: SettingsService
   ) {
     addIcons({ filmOutline, settingsOutline });
   }
 
-  // Usamos ngOnInit para cargar los datos iniciales
-  async ngOnInit() {
-    // Cargamos el nombre del usuario para mostrar saludo personalizado
-    const nombre = await this.settingsService.get('nombre_usuario') || 'Visitante';
-    this.saludoUsuario = `Hola, ${nombre}`;
-    
-    // Simulamos una carga de datos de 2 segundos
-    setTimeout(() => {
-      this.cargarPeliculas();
-      this.cargando = false; // Cambiamos el estado a "cargado"
-    }, 2000);
+  // Usar ionViewWillEnter en lugar de ngOnInit para recargar datos cada vez que se entra en la página
+  async ionViewWillEnter() {
+    await this.cargarDatos();
   }
 
-  /**
-   * Pide las películas al servicio y actualiza la lista local
-   */
-  cargarPeliculas() {
-    this.listaDePeliculas = this.peliculasService.getPeliculas();
+  async cargarDatos() {
+    try {
+      // Cargamos el nombre del usuario para mostrar saludo personalizado
+      const nombre = await this.settingsService.get('nombre_usuario') || 'Visitante';
+      this.saludoUsuario = `Hola, ${nombre}`;
+      
+      // Ahora esperamos a que lleguen los datos del servidor
+      this.cargando = true;
+      this.listaDePeliculas = await this.peliculasService.getPeliculas();
+      this.cargando = false;
+    } catch (error) {
+      console.error('Error al cargar las películas:', error);
+      this.cargando = false;
+      const toast = await this.toastController.create({
+        message: 'Error al cargar las películas',
+        duration: 2000,
+        position: 'bottom',
+        color: 'danger'
+      });
+      await toast.present();
+    }
   }
 
   // --- Agregar película con avisos de Ionic ---
   async agregarPelicula() {
     // 1. Primero validamos que todos los campos estén completos
     if (!this.nuevaPelicula.nombre || !this.nuevaPelicula.autor || !this.nuevaPelicula.descripcion || !this.nuevaPelicula.img) {
-      // Mostrar Toast si falta información
       const toast = await this.toastController.create({
         message: 'Completa todos los campos antes de continuar.',
         duration: 2000,
@@ -95,22 +99,31 @@ export class HomePage implements OnInit {
         {
           text: 'Aceptar',
           handler: async () => {
-            // 3. Si el usuario acepta, agregamos la película al servicio
-            const exito = this.peliculasService.agregarPelicula(this.nuevaPelicula);
+            try {
+              // 3. Agregamos la película al servidor
+              await this.peliculasService.agregarPelicula(this.nuevaPelicula);
 
-            if (exito) {
               // 4. Limpiar campos
               this.nuevaPelicula = { id: 0, nombre: '', autor: '', descripcion: '', img: '' };
 
-              // 5. Volvemos a pedir la lista actualizada al servicio para refrescar la vista
-              this.cargarPeliculas();
+              // 5. Recargamos la lista desde el servidor
+              await this.cargarDatos();
 
-              // 6. Mostrar aviso de éxito con Toast
+              // 6. Mostrar aviso de éxito
               const toast = await this.toastController.create({
                 message: 'Película añadida con éxito.',
                 duration: 2000,
                 position: 'bottom',
                 color: 'success'
+              });
+              await toast.present();
+            } catch (error) {
+              console.error('Error al agregar película:', error);
+              const toast = await this.toastController.create({
+                message: 'Error al agregar la película',
+                duration: 2000,
+                position: 'bottom',
+                color: 'danger'
               });
               await toast.present();
             }
@@ -133,16 +146,25 @@ export class HomePage implements OnInit {
 
   // --- Eliminar película ---
   async eliminarPelicula(pelicula: Peliculas) {
-    // 1. Le pedimos al servicio que elimine la película
-    const exito = this.peliculasService.eliminarPelicula(pelicula.id);
-    
-    if (exito) {
-      // 2. Volvemos a cargar la lista actualizada del servicio
-      this.cargarPeliculas();
+    try {
+      // 1. Llamamos al servicio para eliminar la película del servidor
+      await this.peliculasService.eliminarPelicula(pelicula.id);
+      
+      // 2. Recargamos la lista desde el servidor
+      await this.cargarDatos();
       
       // 3. Mostramos un Toast de confirmación
       const toast = await this.toastController.create({
         message: `"${pelicula.nombre}" ha sido eliminada.`,
+        duration: 2000,
+        position: 'bottom',
+        color: 'danger'
+      });
+      await toast.present();
+    } catch (error) {
+      console.error('Error al eliminar película:', error);
+      const toast = await this.toastController.create({
+        message: 'Error al eliminar la película',
         duration: 2000,
         position: 'bottom',
         color: 'danger'

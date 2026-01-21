@@ -15,6 +15,7 @@ import { PeliculasService } from 'src/app/services/peliculas';
 })
 export class DetalleTareaPage implements OnInit {
   pelicula?: Peliculas;
+  cargando: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,17 +25,19 @@ export class DetalleTareaPage implements OnInit {
     private toastController: ToastController
   ) { }
 
-  ngOnInit() {
-    // Obtenemos el ID de la película desde la URL
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    
-    // Obtenemos la película del servicio
-    this.pelicula = this.peliculasService.getPeliculaById(id);
-
-    // Mejora 5: Manejo de errores - si no existe la película, redirigir a home
-    if (!this.pelicula) {
-      this.router.navigate(['/home']);
-      this.mostrarToast('Elemento no encontrado');
+  async ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      try {
+        // Esperamos la respuesta del servidor
+        this.pelicula = await this.peliculasService.getPeliculaById(id);
+      } catch (error) {
+        console.error('Película no encontrada', error);
+        this.router.navigate(['/home']);
+        await this.mostrarToast('Elemento no encontrado');
+      } finally {
+        this.cargando = false;
+      }
     }
   }
 
@@ -58,11 +61,16 @@ export class DetalleTareaPage implements OnInit {
           text: 'Eliminar',
           role: 'destructive',
           handler: async () => {
-            // Mejora 2: Borrar y redirigir
-            if (this.pelicula) {
-              this.peliculasService.eliminarPelicula(this.pelicula.id);
-              await this.mostrarToast('Película eliminada');
-              this.router.navigate(['/home']);
+            try {
+              // Mejora 2: Borrar desde el servidor y redirigir
+              if (this.pelicula) {
+                await this.peliculasService.eliminarPelicula(this.pelicula.id);
+                await this.mostrarToast('Película eliminada');
+                this.router.navigate(['/home']);
+              }
+            } catch (error) {
+              console.error('Error al eliminar:', error);
+              await this.mostrarToast('Error al eliminar la película');
             }
           }
         }
