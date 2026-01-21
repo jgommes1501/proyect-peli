@@ -7,8 +7,9 @@ import { ListpeliComponent } from '../component/listpeli/listpeli.component';
 import { HeaderComponent } from '../component/header/header.component';
 import { Peliculas } from '../interface/peliculas';
 import { PeliculasService } from '../services/peliculas'; // ¡Importante!
+import { SettingsService } from '../services/settings.service'; // Importar SettingsService
 import { addIcons } from 'ionicons';
-import { filmOutline } from 'ionicons/icons';
+import { filmOutline, settingsOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomePage implements OnInit {
   // --- Control de estado de carga ---
   cargando: boolean = true;
   skeletonArray = Array(31); // Array para generar 31 skeletons
+  saludoUsuario: string = 'Hola'; // Saludo personalizado
 
   // --- Variables del formulario ---
   nuevaPelicula: Peliculas = {
@@ -40,13 +42,18 @@ export class HomePage implements OnInit {
   constructor(
     private toastController: ToastController,
     private alertController: AlertController,
-    private peliculasService: PeliculasService // Inyección de dependencias
+    private peliculasService: PeliculasService, // Inyección de dependencias
+    private settingsService: SettingsService // Inyectar SettingsService
   ) {
-    addIcons({ filmOutline });
+    addIcons({ filmOutline, settingsOutline });
   }
 
   // Usamos ngOnInit para cargar los datos iniciales
-  ngOnInit() {
+  async ngOnInit() {
+    // Cargamos el nombre del usuario para mostrar saludo personalizado
+    const nombre = await this.settingsService.get('nombre_usuario') || 'Visitante';
+    this.saludoUsuario = `Hola, ${nombre}`;
+    
     // Simulamos una carga de datos de 2 segundos
     setTimeout(() => {
       this.cargarPeliculas();

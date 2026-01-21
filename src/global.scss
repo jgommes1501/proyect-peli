@@ -33,5 +33,85 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.class.css";
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+/* Importar nuestras variables de tema */
+@import "theme/variables.scss";
+
+/* Estilos adicionales para el tema oscuro - NEGRO */
+html.dark {
+  color-scheme: dark;
+  
+  ion-content {
+    --background: #000000 !important;
+    --color: #f1f5f9 !important;
+  }
+  
+  ion-header {
+    --background: #000000 !important;
+    --color: #f1f5f9 !important;
+  }
+  
+  ion-toolbar {
+    --background: #0d0d0d !important;
+    --color: #f1f5f9 !important;
+    --border-color: #1a1a1a !important;
+  }
+  
+  ion-item {
+    --background: #0d0d0d !important;
+    --color: #f1f5f9 !important;
+    --border-bottom-color: #1a1a1a !important;
+  }
+  
+  ion-list {
+    --background: #000000 !important;
+  }
+  
+  ion-label {
+    color: #f1f5f9 !important;
+  }
+  
+  ion-toggle {
+    --background: #1a1a1a !important;
+  }
+}
+
+html {
+  color-scheme: light;
+  
+  ion-content {
+    --background: #ffffff !important;
+    --color: #1f2937 !important;
+  }
+  
+  ion-header {
+    --background: #ffffff !important;
+    --color: #1f2937 !important;
+  }
+  
+  ion-toolbar {
+    --background: #f9fafb !important;
+    --color: #1f2937 !important;
+    --border-color: #e5e7eb !important;
+  }
+  
+  ion-item {
+    --background: #f9fafb !important;
+    --color: #1f2937 !important;
+    --border-bottom-color: #e5e7eb !important;
+  }
+  
+  ion-list {
+    --background: #ffffff !important;
+  }
+  
+  ion-label {
+    color: #1f2937 !important;
+  }
+  
+  ion-toggle {
+    --background: #e5e7eb !important;
+  }
+}

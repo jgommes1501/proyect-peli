@@ -21,6 +21,11 @@
         <ion-card-content style="padding: 16px 0 0 0;">
           <h3>Descripción: </h3>
           <p>{{ pelicula.descripcion }}</p>
+          
+          <!-- Botón eliminar -->
+          <ion-button expand="block" color="danger" (click)="eliminarPelicula()" style="margin-top: 16px;">
+            Eliminar Película
+          </ion-button>
         </ion-card-content>
       </div>
     </div>
