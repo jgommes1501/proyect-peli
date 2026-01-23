@@ -10,7 +10,7 @@
     {
       "id": "2",
       "nombre": "Interestelar",
-      "autor": "Christopher",
+      "autor": "Christopher Nolan",
       "descripcion": "Un grupo de científicos y exploradores, encabezados por Cooper, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
       "img": "assets/images/Int.jpg"
     },
@@ -251,6 +251,41 @@
       "autor": "John Wells",
       "descripcion": "La adicción ha llevado a Adam Jones, chef de un importante restaurante en París, a perder las dos estrellas Michelín. Caído en desgracia, se encuentra en una espiral donde todo lo que toca parece hundirse bajo sus pies. Decidido a no rendirse, coge todo su equipo de cocina y se traslada al próspero Londres.",
       "img": "https://m.media-amazon.com/images/M/MV5BNjEzNTk2OTEwNF5BMl5BanBnXkFtZTgwNzExMTg0NjE@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "3d9d",
+      "nombre": "Formula 1",
+      "autor": "Joseph Kosinski",
+      "descripcion": "El mítico piloto Sonny Hayes vuelve de su retiro, persuadido para liderar un equipo de Fórmula 1 en apuros y guiar a su joven promesa, en busca de una nueva oportunidad de éxito.",
+      "img": "https://www.aceprensa.com/wp-content/uploads/2025/06/f1-la-pelicula-818x1024.jpg"
+    },
+    {
+      "id": "bc0c",
+      "nombre": "El y Ella",
+      "autor": "Aliece Freeney",
+      "descripcion": "es una miniserie estadounidense de suspenso y misterio protagonizada por Tessa Thompson, Jon Bernthal, Pablo Schreiber, Rebecca Rittenhouse y Sunita Mani. Es una adaptación de la novela homónima de Alice Feeney de 2020 y se estrenó en Netflix el 8 de enero de 2026.",
+      "img": "https://pics.filmaffinity.com/his_hers-513872218-large.jpg"
+    },
+    {
+      "id": "c55c",
+      "nombre": "50 Primeras citas",
+      "autor": "Peter Segal",
+      "descripcion": "Henry, biólogo marino, no tiene la mínima intención de comprometerse con nadie hasta que conoce a Lucy, la chica de sus sueños. Sin embargo, hay un pequeño problema, la joven se levanta cada mañana sin recordar absolutamente nada del día anterior.",
+      "img": "https://m.media-amazon.com/images/M/MV5BMjAwMzc4MDgxNF5BMl5BanBnXkFtZTYwNjUwMzE3._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "94ca",
+      "nombre": "Háblame",
+      "autor": "Michael Philippou, Danny Philippou",
+      "descripcion": "Cuando un grupo de amigos descubre cómo conjurar espíritus con una mano embalsamada, quedan enganchados al nuevo y emocionante juego de alto riesgo, hasta que uno de ellos va demasiado lejos y desata aterradoras fuerzas sobrenaturales.",
+      "img": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTn4hl0hsLUagCdlNfG31Nh45wXrctB66JzwgU-dFNKf3MMQMuo"
+    },
+    {
+      "id": "fbde",
+      "nombre": "Thanksgiving",
+      "autor": " Eli Roth",
+      "descripcion": "Se produce una tragedia durante la celebración de Black Friday en Plymouth, Massachusetts. Un año después, un asesino en serie empieza a matar y mutilar a los vecinos de la localidad y todo apunta a que su masacre guarda relación con lo ocurrido.",
+      "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6BPx7DML5hM3H1NabTxy75-EajkgEPo8WVZAyd1XwOh6pqyzc"
     }
   ],
   "usuarios": [
