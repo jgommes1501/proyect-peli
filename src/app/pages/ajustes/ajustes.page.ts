@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from 'src/app/services/settings.service';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonToggle, IonButtons, IonBackButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonToggle, IonButtons, IonBackButton, IonInput } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-ajustes',
@@ -11,7 +11,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, Io
   imports: [
     IonContent, IonHeader, IonTitle, IonToolbar, 
     IonButtons, IonBackButton, 
-    IonList, IonListHeader, IonItem, IonLabel, IonToggle, 
+    IonList, IonListHeader, IonItem, IonLabel, IonToggle, IonInput,
     FormsModule
   ]
 })
@@ -28,7 +28,7 @@ export class AjustesPage implements OnInit {
     // Si no existe (es la primera vez), settingsService.get devuelve null, 
     // así que usamos '|| false' para que sea false por defecto.
     this.modoOscuro = await this.settingsService.get('modo_oscuro') || false;
-    this.nombre = await this.settingsService.get('nombre') || '';
+    this.nombre = await this.settingsService.get('nombre_usuario') || '';
     
     // Aplicamos el tema inmediatamente al entrar por si acaso
     this.aplicarTema(this.modoOscuro);
@@ -36,7 +36,7 @@ export class AjustesPage implements OnInit {
 
   // Guardar nombre en la base de datos
   async guardarNombre() {
-    await this.settingsService.set('nombre', this.nombre);
+    await this.settingsService.set('nombre_usuario', this.nombre);
     console.log('Nombre guardado:', this.nombre);
   }
 

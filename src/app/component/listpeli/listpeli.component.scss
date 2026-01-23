@@ -8,5 +8,9 @@ ion-card {
 ion-card:hover {
   /* La hacemos un 2% más grande */
   transform: scale(1.02);
+}
+
+/* Cursor de mano solo en el botón "Ver más" */
+ion-button:hover {
   cursor: pointer;
 }

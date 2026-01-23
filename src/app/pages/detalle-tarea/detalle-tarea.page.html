@@ -14,18 +14,84 @@
       
       <div style="width: 25%;">
         <ion-card-header style="padding: 0;">
-          <ion-card-title>{{ pelicula.nombre }}</ion-card-title>
-          <ion-card-subtitle>Director: {{ pelicula.autor }}</ion-card-subtitle>
+          <ion-card-title>
+            <ion-input
+              *ngIf="editando"
+              type="text"
+              [(ngModel)]="pelicula.nombre"
+              placeholder="Nombre de la película"
+            ></ion-input>
+            <span *ngIf="!editando">{{ pelicula.nombre }}</span>
+          </ion-card-title>
+          <ion-card-subtitle>
+            Director:
+            <ion-input
+              *ngIf="editando"
+              type="text"
+              [(ngModel)]="pelicula.autor"
+              placeholder="Autor/Director"
+              style="margin-top: 4px;"
+            ></ion-input>
+            <span *ngIf="!editando">{{ pelicula.autor }}</span>
+          </ion-card-subtitle>
         </ion-card-header>
         
         <ion-card-content style="padding: 16px 0 0 0;">
-          <h3>Descripción: </h3>
-          <p>{{ pelicula.descripcion }}</p>
+          <h3>Descripción:</h3>
+          <ion-textarea
+            *ngIf="editando"
+            [(ngModel)]="pelicula.descripcion"
+            placeholder="Descripción"
+            style="margin-top: 8px;"
+          ></ion-textarea>
+          <p *ngIf="!editando">{{ pelicula.descripcion }}</p>
+
+          <h3 *ngIf="editando" style="margin-top: 16px;">URL de Imagen:</h3>
+          <ion-input
+            *ngIf="editando"
+            type="text"
+            [(ngModel)]="pelicula.img"
+            placeholder="URL de la imagen"
+            style="margin-top: 4px;"
+          ></ion-input>
           
-          <!-- Botón eliminar -->
-          <ion-button expand="block" color="danger" (click)="eliminarPelicula()" style="margin-top: 16px;">
-            Eliminar Película
-          </ion-button>
+          <!-- Botones de acción -->
+          <div style="display: flex; gap: 8px; margin-top: 16px; flex-direction: column;">
+            <ion-button
+              *ngIf="!editando"
+              expand="block"
+              color="primary"
+              (click)="editando = true"
+            >
+              Editar Película
+            </ion-button>
+
+            <ion-button
+              *ngIf="editando"
+              expand="block"
+              color="success"
+              (click)="guardarCambios()"
+            >
+              Guardar Cambios
+            </ion-button>
+
+            <ion-button
+              *ngIf="editando"
+              expand="block"
+              color="medium"
+              (click)="editando = false"
+            >
+              Cancelar
+            </ion-button>
+
+            <ion-button
+              expand="block"
+              color="danger"
+              (click)="eliminarPelicula()"
+            >
+              Eliminar Película
+            </ion-button>
+          </div>
         </ion-card-content>
       </div>
     </div>

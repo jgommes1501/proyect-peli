@@ -10,8 +10,8 @@
     {
       "id": "2",
       "nombre": "Interestelar",
-      "autor": "Christopher Nolan",
-      "descripcion": "Un grupo de científicos...",
+      "autor": "Christopher",
+      "descripcion": "Un grupo de científicos y exploradores, encabezados por Cooper, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
       "img": "assets/images/Int.jpg"
     },
     {
@@ -225,18 +225,32 @@
       "img": "assets/images/renacido.jpg"
     },
     {
-      "id": 0,
-      "nombre": "El Médico",
-      "autor": "Noah Gordon",
-      "descripcion": "Ambientada en Inglaterra, en el siglo XI, narra la historia de Rob Cole, un joven que se queda huérfano al morir su madre víctima de una extraña enfermedad. Esta circunstancia lo anima a irse a Persia a estudiar medicina bajo la tutela del sabio doctor Ibn Sina.",
-      "img": "https://es.web.img2.acsta.net/pictures/210/581/21058197_20131115130548712.jpg"
-    },
-    {
-      "id": 0,
+      "id": "33",
       "nombre": "El último samurái",
       "autor": "Edward Zwick",
       "descripcion": "1876. El capitán Nathan Algren es un hombre que vive atormentado por los recuerdos de la guerra, pero el mundo ha cambiado y el pragmatismo ha reemplazado al valor, el interés personal ha ocupado el lugar del sacrificio y el sentido del honor ha desaparecido.",
       "img": "https://es.web.img3.acsta.net/medias/nmedia/18/67/78/13/20066706.jpg"
+    },
+    {
+      "id": "34",
+      "nombre": "El Médico",
+      "autor": " Philipp Stölzl",
+      "descripcion": "Ambientada en Inglaterra, en el siglo XI, narra la historia de Rob Cole, un joven que se queda huérfano al morir su madre víctima de una extraña enfermedad. Esta circunstancia lo anima a irse a Persia a estudiar medicina bajo la tutela del sabio doctor Ibn Sina.",
+      "img": "https://es.web.img3.acsta.net/c_310_420/pictures/210/581/21058197_20131115130548712.jpg"
+    },
+    {
+      "id": "35",
+      "nombre": "Normal People",
+      "autor": "Sally Rooney",
+      "descripcion": "Siguiendo a Marianne y Connell, de diferentes orígenes pero del mismo pequeño pueblo en Irlanda, mientras entran y salen de la vida romántica del otro y comienzan a crecer.",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdASEYA-RAQv3UychPC9Be9ceOx4byF-V68G15N6K3rvAoPex6hDw2dS79CWs1hOrvhJ098R_x263mWBV3eNLnhiBQRei0slN1nqDFEw&s=10"
+    },
+    {
+      "id": "ea34",
+      "nombre": "Burnt / Una buena receta",
+      "autor": "John Wells",
+      "descripcion": "La adicción ha llevado a Adam Jones, chef de un importante restaurante en París, a perder las dos estrellas Michelín. Caído en desgracia, se encuentra en una espiral donde todo lo que toca parece hundirse bajo sus pies. Decidido a no rendirse, coge todo su equipo de cocina y se traslada al próspero Londres.",
+      "img": "https://m.media-amazon.com/images/M/MV5BNjEzNTk2OTEwNF5BMl5BanBnXkFtZTgwNzExMTg0NjE@._V1_FMjpg_UX1000_.jpg"
     }
   ],
   "usuarios": [

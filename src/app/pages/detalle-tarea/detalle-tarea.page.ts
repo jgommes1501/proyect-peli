@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, AlertController, ToastController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInput, IonTextarea, AlertController, ToastController } from '@ionic/angular/standalone';
 import { Peliculas } from 'src/app/interface/peliculas';
 import { PeliculasService } from 'src/app/services/peliculas';
 
@@ -11,11 +11,12 @@ import { PeliculasService } from 'src/app/services/peliculas';
   templateUrl: './detalle-tarea.page.html',
   styleUrls: ['./detalle-tarea.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInput, IonTextarea, CommonModule, FormsModule]
 })
 export class DetalleTareaPage implements OnInit {
   pelicula?: Peliculas;
   cargando: boolean = true;
+  editando: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +39,31 @@ export class DetalleTareaPage implements OnInit {
       } finally {
         this.cargando = false;
       }
+    }
+  }
+
+  /**
+   * Guarda todos los cambios de la película (Caso C: Múltiples campos)
+   * Se envía el objeto completo con todos los cambios ya aplicados.
+   */
+  async guardarCambios() {
+    try {
+      if (!this.pelicula) {
+        return;
+      }
+
+      // Enviamos el objeto entero con todos los campos modificados
+      await this.peliculasService.updatePelicula(this.pelicula);
+      console.log('Todos los cambios guardados');
+
+      // Salimos del modo edición
+      this.editando = false;
+
+      // Mostrar confirmación
+      await this.mostrarToast('Película actualizada correctamente');
+    } catch (error) {
+      console.error('Error al guardar cambios:', error);
+      await this.mostrarToast('Error al guardar los cambios');
     }
   }
 

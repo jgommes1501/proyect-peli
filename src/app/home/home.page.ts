@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, ToastController, AlertController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +18,7 @@ import { filmOutline, settingsOutline } from 'ionicons/icons';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   // --- Control de estado de carga ---
   cargando: boolean = true;
@@ -43,6 +43,12 @@ export class HomePage {
     private settingsService: SettingsService
   ) {
     addIcons({ filmOutline, settingsOutline });
+  }
+
+  // Cargar el saludo personalizado al iniciar el componente por primera vez
+  async ngOnInit() {
+    const nombre = await this.settingsService.get('nombre_usuario') || 'Visitante';
+    this.saludoUsuario = `Hola, ${nombre}`;
   }
 
   // Usar ionViewWillEnter en lugar de ngOnInit para recargar datos cada vez que se entra en la página

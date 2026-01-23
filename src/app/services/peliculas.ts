@@ -43,7 +43,23 @@ export class PeliculasService {
       throw new Error('Completa todos los campos requeridos');
     }
 
-    return firstValueFrom(this.http.post<PeliculasInterface>(this._url, pelicula));
+    // Creamos una copia sin el ID para que JSON Server lo asigne automáticamente
+    const { id, ...peliculaSinId } = pelicula;
+    return firstValueFrom(this.http.post<PeliculasInterface>(this._url, peliculaSinId));
+  }
+
+  /**
+   * Actualiza una película existente (PUT /peliculas/ID)
+   * Se envía el objeto completo con los cambios ya aplicados.
+   */
+  async updatePelicula(pelicula: PeliculasInterface): Promise<PeliculasInterface> {
+    // Construimos la URL específica con el ID de la película
+    const urlEspecifica = `${this._url}/${pelicula.id}`;
+
+    // Hacemos la petición PUT enviando el objeto modificado
+    return firstValueFrom(
+      this.http.put<PeliculasInterface>(urlEspecifica, pelicula)
+    );
   }
 
   /**
