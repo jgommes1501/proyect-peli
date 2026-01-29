@@ -11,7 +11,7 @@
       "id": "2",
       "nombre": "Interestelar",
       "autor": "Christopher Nolan",
-      "descripcion": "Un grupo de científicos y exploradores, encabezados por Cooper, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
+      "descripcion": " grupo de científicos y exploradores, encabezados por Cooper, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
       "img": "assets/images/Int.jpg"
     },
     {
@@ -211,13 +211,6 @@
       "img": "assets/images/caza.jpg"
     },
     {
-      "id": "31",
-      "nombre": "Mad Max: Furia en la carretera",
-      "autor": "George Miller",
-      "descripcion": "En un mundo post-apocalíptico, un grupo de guerreros lucha por la supervivencia.",
-      "img": "assets/images/mad_max_fury.jpg"
-    },
-    {
       "id": "32",
       "nombre": "El Renacido",
       "autor": "Alejandro González Iñárritu",
@@ -286,6 +279,20 @@
       "autor": " Eli Roth",
       "descripcion": "Se produce una tragedia durante la celebración de Black Friday en Plymouth, Massachusetts. Un año después, un asesino en serie empieza a matar y mutilar a los vecinos de la localidad y todo apunta a que su masacre guarda relación con lo ocurrido.",
       "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6BPx7DML5hM3H1NabTxy75-EajkgEPo8WVZAyd1XwOh6pqyzc"
+    },
+    {
+      "id": "c291",
+      "nombre": "Mud",
+      "autor": "Jeff Nichols",
+      "descripcion": "En una isla del Río Misisipi, dos jóvenes amigos descubren a Mud, un fugitivo cuyas historias salvajes acerca de una mujer hermosa, el asesinato de un hombre en Texas y su persecución por parte de un cazarrecompensas, se hacen realidad.",
+      "img": "https://pics.filmaffinity.com/Mud-723972853-large.jpg"
+    },
+    {
+      "id": "bcdb",
+      "nombre": "Amor y otras Drogas",
+      "autor": "Edward Zwick",
+      "descripcion": "Maggie es una mujer independiente que ha decidido vivir sin ataduras. Pero conoce a Jamie, un joven cuyo irresistible encanto funciona no sólo con las mujeres, sino también dentro del mundo de las ventas farmacéuticas.",
+      "img": "https://pics.filmaffinity.com/Amor_y_otras_drogas-886095999-large.jpg"
     }
   ],
   "usuarios": [

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'; // 1. Importamos Storage
-import { HttpClient } from '@angular/common/http'; // 1. Importar HttpClient
-import { firstValueFrom } from 'rxjs';             // 1. Importar utilidad para Promesas
 @Injectable({
   providedIn: 'root'
 })
@@ -34,7 +32,7 @@ export class SettingsService {
    * @param key La clave única (ej: 'modo_oscuro')
    * @param value El valor a guardar (ej: true, 'Javier', etc.)
    */
-  public async set(key: string, value: any): Promise<void> {
+  public async set<T>(key: string, value: T): Promise<void> {
     // Nos aseguramos de que esté iniciada
     await this.init();
     console.log(`Guardando ${key}:`, value);
@@ -46,11 +44,11 @@ export class SettingsService {
    * @param key La clave a buscar
    * @returns El valor guardado o null si no existe
    */
-  public async get(key: string): Promise<any> {
+  public async get<T>(key: string): Promise<T | null> {
     await this.init();
     const valor = await this._storage?.get(key);
     console.log(`Obteniendo ${key}:`, valor);
-    return valor;
+    return (valor ?? null) as T | null;
   }
   
   /**

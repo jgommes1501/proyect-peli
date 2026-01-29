@@ -45,6 +45,28 @@
   <!-- SECCIÓN DE CONTENIDO REAL -->
   <div *ngIf="!cargando">
     <ion-card>
+      <ion-card-content>
+        <ion-searchbar
+          placeholder="Buscar en servidor..."
+          debounce="300"
+          (ionInput)="onBuscar($event)">
+        </ion-searchbar>
+
+        <ion-item lines="none">
+          <ion-select
+            label="Ordenar"
+            interface="popover"
+            [(ngModel)]="ordenSeleccionado"
+            (ionChange)="onOrdenar($event)">
+            <ion-select-option value="recent">Más recientes</ion-select-option>
+            <ion-select-option value="az">Alfabético A-Z</ion-select-option>
+            <ion-select-option value="za">Alfabético Z-A</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
       <ion-card-header>
         <ion-card-title>Añadir Película 🎬</ion-card-title>
       </ion-card-header>

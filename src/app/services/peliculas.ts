@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Peliculas as PeliculasInterface } from '../interface/peliculas';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,27 @@ export class PeliculasService {
 
   // Definimos la URL base de nuestra API (puerto 3000 por defecto de JSON Server)
   // Asegúrate de que '/Peliculas' coincide con la colección en tu db.json
-  private _url = 'http://localhost:3000/Peliculas';
+  private _url = `${environment.apiUrl}/Peliculas`;
 
   constructor(private http: HttpClient) { }
 
   /**
    * Obtiene todas las películas del servidor (GET /peliculas)
    */
-  async getPeliculas(): Promise<PeliculasInterface[]> {
-    return firstValueFrom(this.http.get<PeliculasInterface[]>(this._url));
+  async getPeliculas(params?: { nombre_like?: string; _sort?: string; _order?: 'asc' | 'desc' }): Promise<PeliculasInterface[]> {
+    let httpParams = new HttpParams();
+    
+    if (params?.nombre_like) {
+      httpParams = httpParams.set('nombre_like', params.nombre_like);
+    }
+    if (params?._sort) {
+      httpParams = httpParams.set('_sort', params._sort);
+    }
+    if (params?._order) {
+      httpParams = httpParams.set('_order', params._order);
+    }
+    
+    return firstValueFrom(this.http.get<PeliculasInterface[]>(this._url, { params: httpParams }));
   }
 
   /**

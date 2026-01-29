@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInput, IonTextarea, AlertController, ToastController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInput, IonTextarea, AlertController, ToastController, LoadingController } from '@ionic/angular/standalone';
 import { Peliculas } from 'src/app/interface/peliculas';
 import { PeliculasService } from 'src/app/services/peliculas';
 
@@ -23,21 +23,25 @@ export class DetalleTareaPage implements OnInit {
     private router: Router,
     private peliculasService: PeliculasService,
     private alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private loadingCtrl: LoadingController
   ) { }
 
   async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      const loading = await this.loadingCtrl.create({ message: 'Cargando...' });
+      await loading.present();
       try {
         // Esperamos la respuesta del servidor
         this.pelicula = await this.peliculasService.getPeliculaById(id);
       } catch (error) {
         console.error('Película no encontrada', error);
         this.router.navigate(['/home']);
-        await this.mostrarToast('Elemento no encontrado');
+        await this.mostrarError('Elemento no encontrado');
       } finally {
         this.cargando = false;
+        await loading.dismiss();
       }
     }
   }
@@ -47,11 +51,14 @@ export class DetalleTareaPage implements OnInit {
    * Se envía el objeto completo con todos los cambios ya aplicados.
    */
   async guardarCambios() {
-    try {
-      if (!this.pelicula) {
-        return;
-      }
+    if (!this.pelicula) {
+      return;
+    }
 
+    const loading = await this.loadingCtrl.create({ message: 'Guardando...' });
+    await loading.present();
+
+    try {
       // Enviamos el objeto entero con todos los campos modificados
       await this.peliculasService.updatePelicula(this.pelicula);
       console.log('Todos los cambios guardados');
@@ -63,7 +70,9 @@ export class DetalleTareaPage implements OnInit {
       await this.mostrarToast('Película actualizada correctamente');
     } catch (error) {
       console.error('Error al guardar cambios:', error);
-      await this.mostrarToast('Error al guardar los cambios');
+      await this.mostrarError('Error al guardar los cambios');
+    } finally {
+      await loading.dismiss();
     }
   }
 
@@ -87,6 +96,8 @@ export class DetalleTareaPage implements OnInit {
           text: 'Eliminar',
           role: 'destructive',
           handler: async () => {
+            const loading = await this.loadingCtrl.create({ message: 'Eliminando...' });
+            await loading.present();
             try {
               // Mejora 2: Borrar desde el servidor y redirigir
               if (this.pelicula) {
@@ -96,7 +107,9 @@ export class DetalleTareaPage implements OnInit {
               }
             } catch (error) {
               console.error('Error al eliminar:', error);
-              await this.mostrarToast('Error al eliminar la película');
+              await this.mostrarError('Error al eliminar la película');
+            } finally {
+              await loading.dismiss();
             }
           }
         }
@@ -114,6 +127,17 @@ export class DetalleTareaPage implements OnInit {
       message: mensaje,
       duration: 2000,
       position: 'bottom'
+    });
+    await toast.present();
+  }
+
+  async mostrarError(mensaje: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 3000,
+      position: 'bottom',
+      color: 'danger',
+      icon: 'alert-circle-outline'
     });
     await toast.present();
   }

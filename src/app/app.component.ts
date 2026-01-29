@@ -22,7 +22,7 @@ export class AppComponent {
 
   async cargarPreferencias() {
     // Leemos el ajuste guardado
-    const modoOscuro = await this.settingsService.get('modo_oscuro');
+    const modoOscuro = await this.settingsService.get<boolean>('modo_oscuro');
     
     // Si era true, activamos el modo oscuro inmediatamente
     if (modoOscuro) {

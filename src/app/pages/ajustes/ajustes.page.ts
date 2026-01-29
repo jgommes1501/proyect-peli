@@ -27,8 +27,8 @@ export class AjustesPage implements OnInit {
     // Al entrar, cargamos los valores guardados
     // Si no existe (es la primera vez), settingsService.get devuelve null, 
     // así que usamos '|| false' para que sea false por defecto.
-    this.modoOscuro = await this.settingsService.get('modo_oscuro') || false;
-    this.nombre = await this.settingsService.get('nombre_usuario') || '';
+    this.modoOscuro = await this.settingsService.get<boolean>('modo_oscuro') || false;
+    this.nombre = await this.settingsService.get<string>('nombre_usuario') || '';
     
     // Aplicamos el tema inmediatamente al entrar por si acaso
     this.aplicarTema(this.modoOscuro);
