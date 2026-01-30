@@ -35,6 +35,7 @@ export class HomePage implements OnInit {
   };
   
   public listaDePeliculas: Peliculas[] = [];
+  private listaCompleta: Peliculas[] = []; // Lista sin filtrar del servidor
   public terminoBusqueda: string = '';
   public ordenSeleccionado: 'recent' | 'az' | 'za' = 'recent';
   
@@ -73,8 +74,13 @@ export class HomePage implements OnInit {
 
       // Ahora esperamos a que lleguen los datos del servidor
       this.cargando = true;
-      const params = this.construirParametros();
-      this.listaDePeliculas = await this.peliculasService.getPeliculas(params);
+      const params = this.construirParametrosSorting();
+      console.log('🔍 Cargando con orden:', this.ordenSeleccionado, 'Params:', params);
+      this.listaCompleta = await this.peliculasService.getPeliculas(params);
+      console.log('📦 Recibidas', this.listaCompleta.length, 'películas. Primeras 3:', 
+        this.listaCompleta.slice(0, 3).map(p => p.nombre));
+      this.aplicarSorting();
+      this.aplicarFiltroLocal();
     } catch (error) {
       console.error('Error al cargar las películas:', error);
       await this.mostrarError('No se pudieron cargar las películas. Revisa tu conexión.');
@@ -84,41 +90,60 @@ export class HomePage implements OnInit {
     }
   }
 
-  construirParametros() {
-    const params: { nombre_like?: string; _sort?: string; _order?: 'asc' | 'desc' } = {};
+  construirParametrosSorting() {
+    // JSON Server tiene problemas con _order=desc, así que no lo usamos
+    // La ordenación se hará client-side en aplicarSorting()
+    return {};
+  }
 
-    if (this.terminoBusqueda && this.terminoBusqueda.trim().length > 0) {
-      params.nombre_like = this.terminoBusqueda.trim();
-    }
-
+  aplicarSorting() {
+    console.log('📊 Aplicando ordenación:', this.ordenSeleccionado);
+    
     switch (this.ordenSeleccionado) {
       case 'az':
-        params._sort = 'nombre';
-        params._order = 'asc';
+        this.listaCompleta.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
         break;
       case 'za':
-        params._sort = 'nombre';
-        params._order = 'desc';
+        this.listaCompleta.sort((a, b) => b.nombre.localeCompare(a.nombre, 'es'));
         break;
       case 'recent':
       default:
-        // No añadimos sort/order para mostrar orden natural del servidor
-        break;
+        // Orden natural (por ID desc - más recientes primero)
+        this.listaCompleta.sort((a, b) => {
+          const aId = parseInt(a.id as any) || 0;
+          const bId = parseInt(b.id as any) || 0;
+          return bId - aId;
+        });
     }
+    
+    console.log('✅ Ordenación aplicada. Primeras 3:', this.listaCompleta.slice(0, 3).map(p => p.nombre));
+  }
 
-    console.log('Parámetros construidos:', params);
-    return params;
+  aplicarFiltroLocal() {
+    if (!this.terminoBusqueda || this.terminoBusqueda.trim().length === 0) {
+      this.listaDePeliculas = [...this.listaCompleta];
+    } else {
+      const termino = this.terminoBusqueda.toLowerCase().trim();
+      this.listaDePeliculas = this.listaCompleta.filter(p => 
+        p.nombre.toLowerCase().includes(termino) ||
+        p.autor.toLowerCase().includes(termino) ||
+        p.descripcion.toLowerCase().includes(termino)
+      );
+    }
+    console.log(`Filtro aplicado: ${this.listaDePeliculas.length} de ${this.listaCompleta.length} películas`);
   }
 
   async onBuscar(event: any) {
     this.terminoBusqueda = event?.detail?.value || '';
     console.log('Término de búsqueda:', this.terminoBusqueda);
-    await this.cargarDatos();
+    this.aplicarFiltroLocal();
   }
 
   async onOrdenar(event: any) {
-    this.ordenSeleccionado = event?.detail?.value || 'recent';
-    console.log('Orden seleccionado:', this.ordenSeleccionado);
+    const nuevoOrden = event?.detail?.value || 'recent';
+    console.log('\ud83d\udd04 Orden anterior:', this.ordenSeleccionado);
+    this.ordenSeleccionado = nuevoOrden;
+    console.log('\u2705 Orden actualizado a:', this.ordenSeleccionado);
     await this.cargarDatos();
   }
 

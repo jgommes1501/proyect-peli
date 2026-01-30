@@ -56,7 +56,7 @@
           <ion-select
             label="Ordenar"
             interface="popover"
-            [(ngModel)]="ordenSeleccionado"
+            [value]="ordenSeleccionado"
             (ionChange)="onOrdenar($event)">
             <ion-select-option value="recent">Más recientes</ion-select-option>
             <ion-select-option value="az">Alfabético A-Z</ion-select-option>

@@ -18,18 +18,12 @@ export class PeliculasService {
   /**
    * Obtiene todas las películas del servidor (GET /peliculas)
    */
-  async getPeliculas(params?: { nombre_like?: string; _sort?: string; _order?: 'asc' | 'desc' }): Promise<PeliculasInterface[]> {
+  async getPeliculas(params?: { _sort?: string; _order?: 'asc' | 'desc' }): Promise<PeliculasInterface[]> {
+    // Nota: No usamos _order porque JSON Server tiene un bug con desc
+    // La ordenación se hace client-side en el componente
     let httpParams = new HttpParams();
     
-    if (params?.nombre_like) {
-      httpParams = httpParams.set('nombre_like', params.nombre_like);
-    }
-    if (params?._sort) {
-      httpParams = httpParams.set('_sort', params._sort);
-    }
-    if (params?._order) {
-      httpParams = httpParams.set('_order', params._order);
-    }
+    console.log('🌐 Petición GET a:', this._url);
     
     return firstValueFrom(this.http.get<PeliculasInterface[]>(this._url, { params: httpParams }));
   }

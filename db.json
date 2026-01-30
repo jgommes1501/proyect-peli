@@ -293,6 +293,55 @@
       "autor": "Edward Zwick",
       "descripcion": "Maggie es una mujer independiente que ha decidido vivir sin ataduras. Pero conoce a Jamie, un joven cuyo irresistible encanto funciona no sólo con las mujeres, sino también dentro del mundo de las ventas farmacéuticas.",
       "img": "https://pics.filmaffinity.com/Amor_y_otras_drogas-886095999-large.jpg"
+    },
+    {
+      "id": "f314",
+      "nombre": "Invictus",
+      "autor": "Clint Eastwood",
+      "descripcion": "Tras ser liberado, Nelson Mandela llega a la Presidencia y decreta la abolición del Apartheid. En 1995, la celebración en Sudáfrica de la Copa Mundial de Rugby fue el instrumento empleado por el líder negro para construir la unidad nacional.",
+      "img": "https://pics.filmaffinity.com/Invictus-582873614-large.jpg"
+    },
+    {
+      "id": "2644",
+      "nombre": "El gran Gatsby",
+      "autor": "Baz Luhrmann",
+      "descripcion": "Persiguiendo su propia versión del 'sueño americano', Nick acaba siendo vecino de Jay Gatsby, un misterioso millonario que constantemente da fiestas. Al otro lado de la bahía vive la prima de Nick, Daisy, y su mujeriego y aristócrata marido.",
+      "img": "https://es.web.img3.acsta.net/pictures/14/06/04/13/09/206777.jpg"
+    },
+    {
+      "id": "172a",
+      "nombre": "Marty Supreme",
+      "autor": "Josh Safdie",
+      "descripcion": "Marty Supreme es una película estadounidense de comedia dramática deportiva de 2025, producida y dirigida por Josh Safdie, quien la coescribió con Ronald Bronstein, inspirada libremente en el jugador de tenis de mesa estadounidense Marty Reisman.​​",
+      "img": "https://m.media-amazon.com/images/M/MV5BZTRhYjI1MTItMWYwMi00MjY5LWI1OTktMzQwNzA3MWJlN2QyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "526c",
+      "nombre": "Hamnet",
+      "autor": "Chloé Zhao",
+      "descripcion": "Hamnet es una película de drama histórico de 2025 dirigido por la cineasta Chloé Zhao y coescrito junto a Maggie O'Farrell, basado en la novela homónima de 2020 escrita por la propia O'Farrell. ",
+      "img": "https://m.media-amazon.com/images/M/MV5BMDQ5ZmY0OWYtOTYzZi00Mzg5LWE3N2EtMjYwZTAzZmJhYjkyXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "id": "8a62",
+      "nombre": "Sinners",
+      "autor": "Ryan Coogler",
+      "descripcion": "Tratando de dejar atrás sus problemáticas vidas, dos hermanos gemelos regresan a su pueblo natal para empezar de nuevo, solo para descubrir que un mal aún mayor los espera para darles la bienvenida.",
+      "img": "https://pics.filmaffinity.com/sinners-306242848-mmed.jpg"
+    },
+    {
+      "id": "a80e",
+      "nombre": "Zodiac",
+      "autor": "David Fincher",
+      "descripcion": "En los años sesenta y setenta, un asesino en serie se burla de la policía y los medios de comunicación enviándoles cartas y mensajes encriptados. Los investigadores de la policía y reporteros del periódico se obsesionan con el hecho de encontrar al elusivo asesino en serie.",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKi1OYGA8L8s4-xQtNQ5cGMGJvzDv7wQLFJ6aXJn2XNSbniXF45hCmu_BJQmyyoU-etyDCv_y-Z-3oWN3HoYDvKiyxn-av6RsnnAWgfQ&s=10"
+    },
+    {
+      "id": "57a6",
+      "nombre": "El efecto mariposa",
+      "autor": "Eric Bress, J. Mackye Gruber",
+      "descripcion": "Evan Treborn es un joven que se está esforzando por superar unos dolorosos recuerdos de su infancia. Un día descubre una técnica que le permite viajar atrás en el tiempo para poder cambiar el curso de su traumática historia.",
+      "img": "https://pics.filmaffinity.com/El_efecto_mariposa-370563071-large.jpg"
     }
   ],
   "usuarios": [
