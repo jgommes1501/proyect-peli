@@ -9,7 +9,9 @@ import { Peliculas } from '../interface/peliculas';
 import { PeliculasService } from '../services/peliculas';
 import { SettingsService } from '../services/settings.service';
 import { addIcons } from 'ionicons';
-import { filmOutline, settingsOutline } from 'ionicons/icons';
+import { filmOutline, personCircleOutline } from 'ionicons/icons';
+import { PhotoService } from '../services/photo.service';
+import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +33,9 @@ export class HomePage implements OnInit {
     nombre: '',
     autor: '',
     descripcion: '',
-    img: ''
+    img: '',
+    latitud: undefined,
+    longitud: undefined
   };
   
   public listaDePeliculas: Peliculas[] = [];
@@ -44,19 +48,22 @@ export class HomePage implements OnInit {
     private alertController: AlertController,
     private peliculasService: PeliculasService,
     private settingsService: SettingsService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    public photoService: PhotoService
   ) {
-    addIcons({ filmOutline, settingsOutline });
+    addIcons({ filmOutline, personCircleOutline });
   }
 
   // Cargar el saludo personalizado al iniciar el componente por primera vez
   async ngOnInit() {
     const nombre = await this.settingsService.get<string>('nombre_usuario') || 'Visitante';
     this.saludoUsuario = `Hola, ${nombre}`;
+    await this.photoService.loadSavedPhoto();
   }
 
   // Usar ionViewWillEnter en lugar de ngOnInit para recargar datos cada vez que se entra en la página
   async ionViewWillEnter() {
+    await this.photoService.loadSavedPhoto();
     await this.cargarDatos();
   }
 
@@ -162,6 +169,7 @@ export class HomePage implements OnInit {
   async agregarPelicula() {
     // 1. Primero validamos que todos los campos estén completos
     if (!this.nuevaPelicula.nombre || !this.nuevaPelicula.autor || !this.nuevaPelicula.descripcion || !this.nuevaPelicula.img) {
+      await Haptics.notification({ type: NotificationType.Warning });
       const toast = await this.toastController.create({
         message: 'Completa todos los campos antes de continuar.',
         duration: 2000,
@@ -192,7 +200,15 @@ export class HomePage implements OnInit {
               await this.peliculasService.agregarPelicula(this.nuevaPelicula);
 
               // 4. Limpiar campos
-              this.nuevaPelicula = { id: 0, nombre: '', autor: '', descripcion: '', img: '' };
+              this.nuevaPelicula = {
+                id: 0,
+                nombre: '',
+                autor: '',
+                descripcion: '',
+                img: '',
+                latitud: undefined,
+                longitud: undefined
+              };
 
               // 5. Recargamos la lista desde el servidor
               await loading.dismiss();
@@ -206,6 +222,7 @@ export class HomePage implements OnInit {
                 color: 'success'
               });
               await toast.present();
+              await Haptics.impact({ style: ImpactStyle.Medium });
             } catch (error) {
               console.error('Error al agregar película:', error);
               await loading.dismiss();

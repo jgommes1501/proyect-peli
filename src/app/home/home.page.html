@@ -6,10 +6,15 @@
   <ion-header [translucent]="true">
     <ion-toolbar color="primary">
       <ion-title>Mis Películas</ion-title>
-      <!-- Botón de ajustes -->
+      <!-- Avatar de perfil arriba a la derecha -->
       <ion-buttons slot="end">
-        <ion-button routerLink="/ajustes">
-          <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+        <ion-button routerLink="/ajustes" class="avatar-toolbar-btn" aria-label="Ir a opciones de perfil">
+          <ion-avatar class="toolbar-avatar" *ngIf="photoService.foto; else avatarFallback">
+            <img [src]="photoService.foto" alt="Foto de perfil" />
+          </ion-avatar>
+          <ng-template #avatarFallback>
+            <ion-icon name="person-circle-outline" class="toolbar-avatar-fallback"></ion-icon>
+          </ng-template>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
@@ -96,7 +101,7 @@
           [(ngModel)]="nuevaPelicula.img">
         </ion-input>
 
-        <ion-button expand="block" class="ion-margin-top" color="primary" (click)="agregarPelicula()">
+        <ion-button expand="block" class="ion-margin-top cta-add-btn" color="primary" (click)="agregarPelicula()">
           Añadir Película
         </ion-button>
       </ion-card-content>

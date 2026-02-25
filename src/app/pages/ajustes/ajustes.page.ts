@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SettingsService } from 'src/app/services/settings.service';
+import { PhotoService } from 'src/app/services/photo.service';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonItem, IonLabel, IonToggle, IonButtons, IonBackButton, IonInput } from '@ionic/angular/standalone';
+import { IonicModule, ToastController } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { cameraOutline, locate, map } from 'ionicons/icons';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-ajustes',
@@ -9,9 +14,8 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, Io
   styleUrls: ['./ajustes.page.scss'],
   standalone: true,
   imports: [
-    IonContent, IonHeader, IonTitle, IonToolbar, 
-    IonButtons, IonBackButton, 
-    IonList, IonListHeader, IonItem, IonLabel, IonToggle, IonInput,
+    CommonModule,
+    IonicModule,
     FormsModule
   ]
 })
@@ -20,7 +24,46 @@ export class AjustesPage implements OnInit {
   modoOscuro: boolean = false; // Valor por defecto
   nombre: string = ''; // Nombre del usuario
 
-  constructor(private settingsService: SettingsService) { }
+  constructor(
+    private settingsService: SettingsService,
+    public photoService: PhotoService,
+    public locationService: LocationService,
+    private toastController: ToastController
+  ) {
+    addIcons({ cameraOutline, locate, map });
+  }
+
+  async obtenerGPS() {
+    try {
+      await this.locationService.obtenerPosicionActual();
+    } catch (error) {
+      console.log('El usuario denegó el permiso o el GPS está apagado', error);
+    }
+  }
+
+  async addPhoto() {
+    try {
+      await this.photoService.addNewToGallery();
+      const toast = await this.toastController.create({
+        message: 'Foto de perfil actualizada.',
+        duration: 1500,
+        color: 'success',
+        position: 'bottom'
+      });
+      await toast.present();
+    } catch (error: any) {
+      const fueCancelado = `${error?.message || ''}`.toLowerCase().includes('cancel');
+      if (!fueCancelado) {
+        const toast = await this.toastController.create({
+          message: 'No se pudo abrir la cámara/galería.',
+          duration: 2000,
+          color: 'danger',
+          position: 'bottom'
+        });
+        await toast.present();
+      }
+    }
+  }
 
   // ¡IMPORTANTE! Añadimos 'async' para poder usar 'await' dentro
   async ngOnInit() {
@@ -29,6 +72,7 @@ export class AjustesPage implements OnInit {
     // así que usamos '|| false' para que sea false por defecto.
     this.modoOscuro = await this.settingsService.get<boolean>('modo_oscuro') || false;
     this.nombre = await this.settingsService.get<string>('nombre_usuario') || '';
+    await this.photoService.loadSavedPhoto();
     
     // Aplicamos el tema inmediatamente al entrar por si acaso
     this.aplicarTema(this.modoOscuro);

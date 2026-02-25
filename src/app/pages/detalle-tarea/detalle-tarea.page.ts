@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonInput, IonTextarea, AlertController, ToastController, LoadingController } from '@ionic/angular/standalone';
 import { Peliculas } from 'src/app/interface/peliculas';
 import { PeliculasService } from 'src/app/services/peliculas';
+import { Share } from '@capacitor/share';
+import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-detalle-tarea',
@@ -68,6 +70,7 @@ export class DetalleTareaPage implements OnInit {
 
       // Mostrar confirmación
       await this.mostrarToast('Película actualizada correctamente');
+      await Haptics.impact({ style: ImpactStyle.Medium });
     } catch (error) {
       console.error('Error al guardar cambios:', error);
       await this.mostrarError('Error al guardar los cambios');
@@ -103,6 +106,7 @@ export class DetalleTareaPage implements OnInit {
               if (this.pelicula) {
                 await this.peliculasService.eliminarPelicula(this.pelicula.id);
                 await this.mostrarToast('Película eliminada');
+                await Haptics.notification({ type: NotificationType.Success });
                 this.router.navigate(['/home']);
               }
             } catch (error) {
@@ -140,5 +144,25 @@ export class DetalleTareaPage implements OnInit {
       icon: 'alert-circle-outline'
     });
     await toast.present();
+    await Haptics.notification({ type: NotificationType.Error });
+  }
+
+  async compartirPelicula() {
+    if (!this.pelicula) {
+      return;
+    }
+
+    try {
+      await Share.share({
+        title: `Recomendación: ${this.pelicula.nombre}`,
+        text: `${this.pelicula.nombre} - Director: ${this.pelicula.autor}`,
+        url: this.pelicula.img,
+        dialogTitle: 'Compartir película'
+      });
+      await Haptics.impact({ style: ImpactStyle.Light });
+    } catch (error) {
+      console.error('Error al compartir:', error);
+      await this.mostrarError('No se pudo compartir la película');
+    }
   }
 }

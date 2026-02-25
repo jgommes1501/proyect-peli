@@ -4,5 +4,7 @@ export interface Peliculas {
     autor: string;
     id: number;
     img: string;
+    latitud?: number;
+    longitud?: number;
 
 }

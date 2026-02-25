@@ -16,6 +16,18 @@
     </ion-toolbar>
   </ion-header>
 
+  <div class="perfil-avatar">
+    <button type="button" class="avatar-button" (click)="addPhoto()">
+      <div class="avatar-wrapper">
+        <ion-img *ngIf="photoService.foto" [src]="photoService.foto" class="avatar-img"></ion-img>
+        <div *ngIf="!photoService.foto" class="avatar-placeholder">
+          <ion-icon name="camera-outline"></ion-icon>
+        </div>
+      </div>
+      <span class="avatar-hint">Toca para cambiar foto</span>
+    </button>
+  </div>
+
   <!-- Nuestra lista de configuración -->
   <ion-list>
     <!-- Sección de Perfil -->
@@ -37,4 +49,31 @@
       <ion-toggle [(ngModel)]="modoOscuro" (ionChange)="cambiarModoOscuro()"></ion-toggle>
     </ion-item>
   </ion-list>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mi Ubicación</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p *ngIf="locationService.latitud == null">Sin datos GPS</p>
+
+      <div *ngIf="locationService.latitud != null && locationService.longitud != null">
+        <p>Lat: {{ locationService.latitud }}</p>
+        <p>Long: {{ locationService.longitud }}</p>
+
+        <ion-button
+          [href]="'https://www.google.com/maps/search/?api=1&query=' + locationService.latitud + ',' + locationService.longitud"
+          target="_blank">
+          Ver en Mapa
+          <ion-icon name="map" slot="end"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-button expand="block" (click)="obtenerGPS()">
+        <ion-icon name="locate" slot="start"></ion-icon>
+        Obtener Coordenadas
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

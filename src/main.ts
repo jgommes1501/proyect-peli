@@ -1,4 +1,3 @@
-
 // src/main.ts
 
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -7,6 +6,7 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { importProvidersFrom } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 // 1. IMPORTANTE: Importamos el proveedor HTTP
 import { provideHttpClient } from '@angular/common/http';
@@ -32,3 +32,5 @@ bootstrapApplication(AppComponent, {
     ),
   ],
 });
+
+defineCustomElements(window);

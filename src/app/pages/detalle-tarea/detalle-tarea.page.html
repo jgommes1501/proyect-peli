@@ -60,6 +60,15 @@
             <ion-button
               *ngIf="!editando"
               expand="block"
+              color="tertiary"
+              (click)="compartirPelicula()"
+            >
+              Compartir Película
+            </ion-button>
+
+            <ion-button
+              *ngIf="!editando"
+              expand="block"
               color="primary"
               (click)="editando = true"
             >
