@@ -17,8 +17,6 @@ export class LocationService {
 
       this.latitud = coordinates.coords.latitude;
       this.longitud = coordinates.coords.longitude;
-
-      console.log('Posición actual:', this.latitud, this.longitud);
     } catch (error) {
       console.error('Error obteniendo ubicación', error);
       throw error;

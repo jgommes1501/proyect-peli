@@ -23,8 +23,6 @@ export class PeliculasService {
     // La ordenación se hace client-side en el componente
     let httpParams = new HttpParams();
     
-    console.log('🌐 Petición GET a:', this._url);
-    
     return firstValueFrom(this.http.get<PeliculasInterface[]>(this._url, { params: httpParams }));
   }
 

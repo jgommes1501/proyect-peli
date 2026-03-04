@@ -63,7 +63,6 @@ export class DetalleTareaPage implements OnInit {
     try {
       // Enviamos el objeto entero con todos los campos modificados
       await this.peliculasService.updatePelicula(this.pelicula);
-      console.log('Todos los cambios guardados');
 
       // Salimos del modo edición
       this.editando = false;
@@ -91,9 +90,7 @@ export class DetalleTareaPage implements OnInit {
         {
           text: 'Cancelar',
           role: 'cancel',
-          handler: () => {
-            console.log('Eliminación cancelada');
-          }
+          handler: () => {}
         },
         {
           text: 'Eliminar',

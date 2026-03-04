@@ -35,7 +35,6 @@ export class SettingsService {
   public async set<T>(key: string, value: T): Promise<void> {
     // Nos aseguramos de que esté iniciada
     await this.init();
-    console.log(`Guardando ${key}:`, value);
     await this._storage?.set(key, value);
   }
 
@@ -47,7 +46,6 @@ export class SettingsService {
   public async get<T>(key: string): Promise<T | null> {
     await this.init();
     const valor = await this._storage?.get(key);
-    console.log(`Obteniendo ${key}:`, valor);
     return (valor ?? null) as T | null;
   }
   

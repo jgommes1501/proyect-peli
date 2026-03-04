@@ -82,10 +82,7 @@ export class HomePage implements OnInit {
       // Ahora esperamos a que lleguen los datos del servidor
       this.cargando = true;
       const params = this.construirParametrosSorting();
-      console.log('🔍 Cargando con orden:', this.ordenSeleccionado, 'Params:', params);
       this.listaCompleta = await this.peliculasService.getPeliculas(params);
-      console.log('📦 Recibidas', this.listaCompleta.length, 'películas. Primeras 3:', 
-        this.listaCompleta.slice(0, 3).map(p => p.nombre));
       this.aplicarSorting();
       this.aplicarFiltroLocal();
     } catch (error) {
@@ -104,8 +101,6 @@ export class HomePage implements OnInit {
   }
 
   aplicarSorting() {
-    console.log('📊 Aplicando ordenación:', this.ordenSeleccionado);
-    
     switch (this.ordenSeleccionado) {
       case 'az':
         this.listaCompleta.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
@@ -122,8 +117,6 @@ export class HomePage implements OnInit {
           return bId - aId;
         });
     }
-    
-    console.log('✅ Ordenación aplicada. Primeras 3:', this.listaCompleta.slice(0, 3).map(p => p.nombre));
   }
 
   aplicarFiltroLocal() {
@@ -137,20 +130,16 @@ export class HomePage implements OnInit {
         p.descripcion.toLowerCase().includes(termino)
       );
     }
-    console.log(`Filtro aplicado: ${this.listaDePeliculas.length} de ${this.listaCompleta.length} películas`);
   }
 
   async onBuscar(event: any) {
     this.terminoBusqueda = event?.detail?.value || '';
-    console.log('Término de búsqueda:', this.terminoBusqueda);
     this.aplicarFiltroLocal();
   }
 
   async onOrdenar(event: any) {
     const nuevoOrden = event?.detail?.value || 'recent';
-    console.log('\ud83d\udd04 Orden anterior:', this.ordenSeleccionado);
     this.ordenSeleccionado = nuevoOrden;
-    console.log('\u2705 Orden actualizado a:', this.ordenSeleccionado);
     await this.cargarDatos();
   }
 

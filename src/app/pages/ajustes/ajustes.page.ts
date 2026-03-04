@@ -37,7 +37,7 @@ export class AjustesPage implements OnInit {
     try {
       await this.locationService.obtenerPosicionActual();
     } catch (error) {
-      console.log('El usuario denegó el permiso o el GPS está apagado', error);
+      console.error('El usuario denegó el permiso o el GPS está apagado', error);
     }
   }
 
@@ -81,7 +81,6 @@ export class AjustesPage implements OnInit {
   // Guardar nombre en la base de datos
   async guardarNombre() {
     await this.settingsService.set('nombre_usuario', this.nombre);
-    console.log('Nombre guardado:', this.nombre);
   }
 
   // También debe ser async porque settingsService.set devuelve una promesa
@@ -91,9 +90,6 @@ export class AjustesPage implements OnInit {
     
     // 2. Aplicamos el cambio visualmente
     this.aplicarTema(this.modoOscuro);
-    
-    // 3. Log para depuración
-    console.log('Modo oscuro cambiado a:', this.modoOscuro);
   }
 
   aplicarTema(esOscuro: boolean) {
@@ -103,6 +99,5 @@ export class AjustesPage implements OnInit {
     } else {
       document.documentElement.classList.remove('dark');
     }
-    console.log('Clases en html:', document.documentElement.className);
   }
 }
