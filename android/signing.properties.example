@@ -1,0 +1,14 @@
+# Copia este archivo a android/signing.properties y completa tus datos reales.
+# No subas signing.properties ni la keystore al repositorio.
+
+# Ruta absoluta o relativa del archivo .jks/.keystore
+storeFile=C:\\Users\\TU_USUARIO\\Documents\\MisKeys\\proyect-peli-key.jks
+
+# Contraseña de la keystore
+storePassword=CAMBIAR_ESTA_PASSWORD
+
+# Alias de la clave
+keyAlias=key0
+
+# Contraseña de la clave
+keyPassword=CAMBIAR_ESTA_PASSWORD

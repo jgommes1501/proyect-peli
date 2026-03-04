@@ -15,7 +15,10 @@
     "android:live": "ionic cap run android -l --external",
     "android:sync": "ionic cap sync",
     "android:open": "ionic cap open android",
-    "android:prepare": "ionic build && ionic cap sync"
+    "android:prepare": "ionic build && ionic cap sync",
+    "android:prepare:prod": "ionic build --prod && ionic cap sync",
+    "android:bundle:release": "npm run android:prepare:prod && cd android && gradlew.bat bundleRelease",
+    "android:keystore:init": "if not exist android\\signing.properties copy android\\signing.properties.example android\\signing.properties"
   },
   "private": true,
   "dependencies": {

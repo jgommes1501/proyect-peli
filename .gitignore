@@ -68,3 +68,13 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Android signing keys (secrets)
+*.jks
+*.keystore
+*.pem
+*.p12
+*.key
+/keys/
+/android/keys/
+/android/signing.properties

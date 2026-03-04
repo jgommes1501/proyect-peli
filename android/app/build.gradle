@@ -1,5 +1,24 @@
 apply plugin: 'com.android.application'
 
+def signingPropsFile = rootProject.file('signing.properties')
+def signingProps = new Properties()
+def hasSigningProps = signingPropsFile.exists()
+
+if (hasSigningProps) {
+    signingProps.load(new FileInputStream(signingPropsFile))
+}
+
+def hasSigningValue = { key ->
+    def value = signingProps[key]
+    return value != null && value.toString().trim().length() > 0
+}
+
+def hasCompleteSigningProps = hasSigningProps
+        && hasSigningValue('storeFile')
+        && hasSigningValue('storePassword')
+        && hasSigningValue('keyAlias')
+        && hasSigningValue('keyPassword')
+
 android {
     namespace "es.ies.gomez.proyectpeli"
     compileSdk rootProject.ext.compileSdkVersion
@@ -16,11 +35,41 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            if (hasCompleteSigningProps) {
+                def keystorePath = signingProps['storeFile']
+                if (keystorePath?.trim()) {
+                    storeFile file(keystorePath)
+                }
+                storePassword signingProps['storePassword']
+                keyAlias signingProps['keyAlias']
+                keyPassword signingProps['keyPassword']
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (hasCompleteSigningProps) {
+                signingConfig signingConfigs.release
+            }
         }
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(':app:bundleRelease') && !hasCompleteSigningProps) {
+        throw new GradleException("""
+Falta configuración de firma release.
+
+Pasos:
+1) Copia android/signing.properties.example a android/signing.properties
+2) Completa storeFile, storePassword, keyAlias y keyPassword
+3) Ejecuta de nuevo bundleRelease
+""")
     }
 }
 
