@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, ToastController, AlertController } from '@ionic/angular';
+import { IonicModule, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ListpeliComponent } from '../component/listpeli/listpeli.component';
@@ -56,6 +56,7 @@ export class HomePage implements OnInit {
     private alertController: AlertController,
     private peliculasService: PeliculasService,
     private settingsService: SettingsService,
+    private loadingCtrl: LoadingController,
     public photoService: PhotoService,
     private cdr: ChangeDetectorRef
   ) {
