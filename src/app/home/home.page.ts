@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import { IonicModule, ToastController, AlertController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ListpeliComponent } from '../component/listpeli/listpeli.component';
@@ -56,7 +56,6 @@ export class HomePage implements OnInit {
     private alertController: AlertController,
     private peliculasService: PeliculasService,
     private settingsService: SettingsService,
-    private loadingCtrl: LoadingController,
     public photoService: PhotoService,
     private cdr: ChangeDetectorRef
   ) {
@@ -91,19 +90,12 @@ export class HomePage implements OnInit {
       return;
     }
     this.cargandoDatos = true;
-
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando películas... (puede tardar ~30s la primera vez)',
-      spinner: 'bubbles'
-    });
-    await loading.present();
     this.cargando = true;
 
     // Garantiza que el estado de carga se limpia aunque todo lo demás falle
     const safetyTimer = setTimeout(() => {
       this.cargando = false;
       this.cdr.detectChanges();
-      loading.dismiss().catch(() => {});
     }, 55000);
 
     try {
@@ -125,7 +117,6 @@ export class HomePage implements OnInit {
       this.cargando = false;
       this.cargandoDatos = false;
       this.cdr.detectChanges();
-      await loading.dismiss().catch(() => {});
     }
   }
 
