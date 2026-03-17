@@ -69,7 +69,7 @@ export class HomePage implements OnInit {
 
   async cargarDatos() {
     const loading = await this.loadingCtrl.create({
-      message: 'Cargando películas...',
+      message: 'Cargando películas... (puede tardar ~30s la primera vez)',
       spinner: 'bubbles'
     });
     await loading.present();

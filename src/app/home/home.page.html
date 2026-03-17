@@ -29,6 +29,9 @@
 
   <!-- SECCIÓN DE CARGA (SKELETON) -->
   <div *ngIf="cargando" style="padding: 16px;">
+    <ion-card style="text-align:center; padding: 12px; background: #fff3cd; border-left: 4px solid #ff9500;">
+      <p style="margin:0; font-size: 0.9rem;">⏳ Despertando el servidor... puede tardar hasta 30 segundos la primera vez.</p>
+    </ion-card>
     <ion-grid>
       <ion-row class="ion-justify-content-center ion-align-items-stretch">
         <ion-col size="6" size-md="3" *ngFor="let item of skeletonArray">

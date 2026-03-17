@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, timeout } from 'rxjs';
 import { Peliculas as PeliculasInterface } from '../interface/peliculas';
 import { environment } from 'src/environments/environment';
+
+const HTTP_TIMEOUT_MS = 45000;
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class PeliculasService {
     // La ordenación se hace client-side en el componente
     let httpParams = new HttpParams();
     
-    return firstValueFrom(this.http.get<PeliculasInterface[]>(this._url, { params: httpParams }));
+    return firstValueFrom(this.http.get<PeliculasInterface[]>(this._url, { params: httpParams }).pipe(timeout(HTTP_TIMEOUT_MS)));
   }
 
   /**
@@ -31,7 +33,7 @@ export class PeliculasService {
    */
   async getPeliculaById(id: string | number): Promise<PeliculasInterface> {
     const urlEspecifica = `${this._url}/${id}`;
-    return firstValueFrom(this.http.get<PeliculasInterface>(urlEspecifica));
+    return firstValueFrom(this.http.get<PeliculasInterface>(urlEspecifica).pipe(timeout(HTTP_TIMEOUT_MS)));
   }
 
   /**
