@@ -104,6 +104,11 @@ export class AjustesPage implements OnInit {
     await this.cambiarModoOscuro();
   }
 
+  async alternarModoOscuro() {
+    this.modoOscuro = !this.modoOscuro;
+    await this.cambiarModoOscuro();
+  }
+
   aplicarTema(esOscuro: boolean) {
     // Añadimos o quitamos la clase 'dark' al elemento raíz (html)
     if (esOscuro) {
