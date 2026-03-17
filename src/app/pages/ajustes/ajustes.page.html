@@ -43,20 +43,6 @@
       </ion-input>
     </ion-item>
 
-    <!-- Sección de Apariencia -->
-    <ion-list-header>Apariencia</ion-list-header>
-    <ion-item>
-      <ion-label>Modo Oscuro</ion-label>
-      <!-- Enlazamos el toggle con una variable y escuchamos el cambio -->
-      <ion-toggle [(ngModel)]="modoOscuro" (ionChange)="cambiarModoOscuro()"></ion-toggle>
-    </ion-item>
-
-    <!-- Fallback nativo para asegurar visibilidad en web -->
-    <ion-item class="toggle-fallback-item">
-      <ion-label>Modo Oscuro (alternativo)</ion-label>
-      <input class="toggle-fallback" type="checkbox" [checked]="modoOscuro" (change)="cambiarModoOscuroNative($event)" />
-    </ion-item>
-
     <ion-item lines="none">
       <ion-button expand="block" (click)="alternarModoOscuro()">
         {{ modoOscuro ? 'Desactivar modo oscuro' : 'Activar modo oscuro' }}

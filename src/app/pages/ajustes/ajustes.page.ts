@@ -98,12 +98,6 @@ export class AjustesPage implements OnInit {
     this.aplicarTema(this.modoOscuro);
   }
 
-  async cambiarModoOscuroNative(event: Event) {
-    const checked = (event.target as HTMLInputElement).checked;
-    this.modoOscuro = checked;
-    await this.cambiarModoOscuro();
-  }
-
   async alternarModoOscuro() {
     this.modoOscuro = !this.modoOscuro;
     await this.cambiarModoOscuro();
