@@ -19,10 +19,12 @@
   <div class="perfil-avatar">
     <button type="button" class="avatar-button" (click)="addPhoto()">
       <div class="avatar-wrapper">
-        <ion-img *ngIf="photoService.foto" [src]="photoService.foto" class="avatar-img"></ion-img>
+        <img *ngIf="photoService.foto; else sinFoto" [src]="photoService.foto" class="avatar-img" alt="Foto de perfil" />
+        <ng-template #sinFoto>
         <div *ngIf="!photoService.foto" class="avatar-placeholder">
           <ion-icon name="camera-outline"></ion-icon>
         </div>
+        </ng-template>
       </div>
       <span class="avatar-hint">Toca para cambiar foto</span>
     </button>
@@ -47,6 +49,12 @@
       <ion-label>Modo Oscuro</ion-label>
       <!-- Enlazamos el toggle con una variable y escuchamos el cambio -->
       <ion-toggle [(ngModel)]="modoOscuro" (ionChange)="cambiarModoOscuro()"></ion-toggle>
+    </ion-item>
+
+    <!-- Fallback nativo para asegurar visibilidad en web -->
+    <ion-item class="toggle-fallback-item">
+      <ion-label>Modo Oscuro (alternativo)</ion-label>
+      <input class="toggle-fallback" type="checkbox" [checked]="modoOscuro" (change)="cambiarModoOscuroNative($event)" />
     </ion-item>
   </ion-list>
 

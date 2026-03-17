@@ -65,6 +65,12 @@ export class AjustesPage implements OnInit {
     }
   }
 
+  async ionViewWillEnter() {
+    await this.photoService.loadSavedPhoto();
+    this.modoOscuro = await this.settingsService.get<boolean>('modo_oscuro') || false;
+    this.aplicarTema(this.modoOscuro);
+  }
+
   // ¡IMPORTANTE! Añadimos 'async' para poder usar 'await' dentro
   async ngOnInit() {
     // Al entrar, cargamos los valores guardados
@@ -90,6 +96,12 @@ export class AjustesPage implements OnInit {
     
     // 2. Aplicamos el cambio visualmente
     this.aplicarTema(this.modoOscuro);
+  }
+
+  async cambiarModoOscuroNative(event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.modoOscuro = checked;
+    await this.cambiarModoOscuro();
   }
 
   aplicarTema(esOscuro: boolean) {

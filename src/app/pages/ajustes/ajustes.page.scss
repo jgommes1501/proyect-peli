@@ -47,3 +47,34 @@
 	font-size: 12px;
 	color: var(--ion-color-medium);
 }
+
+ion-list,
+ion-item,
+ion-list-header {
+	display: block;
+	visibility: visible;
+	opacity: 1;
+}
+
+ion-item {
+	--min-height: 56px;
+}
+
+ion-toggle {
+	display: block;
+	visibility: visible;
+	opacity: 1;
+	margin-inline-start: auto;
+}
+
+.toggle-fallback-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.toggle-fallback {
+	width: 20px;
+	height: 20px;
+	accent-color: var(--ion-color-primary);
+}
