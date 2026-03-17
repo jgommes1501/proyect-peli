@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage-angular'; // 1. Importamos Storage
 export class SettingsService {
   // Variable privada para guardar la instancia de la base de datos
   private _storage: Storage | null = null;
+  private _initFailed = false;
 
   // 2. Inyectamos el servicio Storage en el constructor
   constructor(private storage: Storage) {
@@ -18,13 +19,18 @@ export class SettingsService {
    */
   async init(): Promise<void> { // Añadimos el tipo de retorno explícito
     // Si ya está iniciada, no hacemos nada
-    if (this._storage != null) {
+    if (this._storage != null || this._initFailed) {
       return;
     }
 
-    // Creamos la instancia
-    const storage = await this.storage.create();
-    this._storage = storage;
+    try {
+      // Creamos la instancia
+      const storage = await this.storage.create();
+      this._storage = storage;
+    } catch {
+      // Fallback para despliegues web donde IndexedDB/Storage falle
+      this._initFailed = true;
+    }
   }
 
   /**
@@ -35,7 +41,13 @@ export class SettingsService {
   public async set<T>(key: string, value: T): Promise<void> {
     // Nos aseguramos de que esté iniciada
     await this.init();
-    await this._storage?.set(key, value);
+
+    if (this._storage) {
+      await this._storage.set(key, value);
+      return;
+    }
+
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
   /**
@@ -45,8 +57,22 @@ export class SettingsService {
    */
   public async get<T>(key: string): Promise<T | null> {
     await this.init();
-    const valor = await this._storage?.get(key);
-    return (valor ?? null) as T | null;
+
+    if (this._storage) {
+      const valor = await this._storage.get(key);
+      return (valor ?? null) as T | null;
+    }
+
+    const raw = localStorage.getItem(key);
+    if (raw == null) {
+      return null;
+    }
+
+    try {
+      return JSON.parse(raw) as T;
+    } catch {
+      return raw as unknown as T;
+    }
   }
   
   /**
@@ -54,6 +80,12 @@ export class SettingsService {
    */
   public async remove(key: string): Promise<void> {
     await this.init();
-    await this._storage?.remove(key);
+
+    if (this._storage) {
+      await this._storage.remove(key);
+      return;
+    }
+
+    localStorage.removeItem(key);
   }
 }

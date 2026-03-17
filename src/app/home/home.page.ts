@@ -170,6 +170,10 @@ export class HomePage implements OnInit {
     await this.cargarDatos();
   }
 
+  async onOrdenarNative() {
+    await this.cargarDatos();
+  }
+
   async mostrarError(mensaje: string) {
     const toast = await this.toastController.create({
       message: mensaje,

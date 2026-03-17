@@ -56,3 +56,37 @@ ion-input.has-focus {
   font-size: 1.05rem;
   font-weight: 700;
 }
+
+.sort-fallback {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-fallback label {
+  font-size: 0.95rem;
+  color: var(--ion-color-medium);
+}
+
+.sort-fallback select {
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: var(--ion-card-background, #fff);
+  color: var(--ion-text-color, #1f2937);
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 8px;
+}
+
+@media (min-width: 768px) {
+  .movies-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
