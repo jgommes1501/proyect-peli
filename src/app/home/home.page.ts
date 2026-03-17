@@ -13,6 +13,13 @@ import { filmOutline, personCircleOutline } from 'ionicons/icons';
 import { PhotoService } from '../services/photo.service';
 import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
 
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms))
+  ]);
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -57,14 +64,21 @@ export class HomePage implements OnInit {
 
   // Cargar el saludo personalizado al iniciar el componente por primera vez
   async ngOnInit() {
-    const nombre = await this.settingsService.get<string>('nombre_usuario') || 'Visitante';
-    this.saludoUsuario = `Hola, ${nombre}`;
-    await this.photoService.loadSavedPhoto();
+    try {
+      const nombre = await withTimeout(this.settingsService.get<string>('nombre_usuario'), 2000) || 'Visitante';
+      this.saludoUsuario = `Hola, ${nombre}`;
+    } catch {
+      this.saludoUsuario = 'Hola, Visitante';
+    }
+
+    // No bloqueamos la carga principal por el almacenamiento local
+    withTimeout(this.photoService.loadSavedPhoto(), 2000).catch(() => {});
   }
 
   // Usar ionViewWillEnter en lugar de ngOnInit para recargar datos cada vez que se entra en la página
   async ionViewWillEnter() {
-    await this.photoService.loadSavedPhoto();
+    // No bloquear por Storage: en web puede tardar o fallar según navegador/modo privacidad
+    await withTimeout(this.photoService.loadSavedPhoto(), 2000).catch(() => {});
     await this.cargarDatos();
   }
 
@@ -85,7 +99,7 @@ export class HomePage implements OnInit {
 
     try {
       // Cargamos el nombre del usuario para mostrar saludo personalizado
-      const nombre = await this.settingsService.get<string>('nombre_usuario') || 'Visitante';
+      const nombre = await withTimeout(this.settingsService.get<string>('nombre_usuario'), 2000) || 'Visitante';
       this.saludoUsuario = `Hola, ${nombre}`;
 
       // Ahora esperamos a que lleguen los datos del servidor
