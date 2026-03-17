@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { firstValueFrom, timeout } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { Peliculas as PeliculasInterface } from '../interface/peliculas';
 import { environment } from 'src/environments/environment';
 
-const HTTP_TIMEOUT_MS = 45000;
+const HTTP_TIMEOUT_MS = 50000;
+
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error(`Timeout: el servidor no respondió en ${ms / 1000}s`)), ms)
+    )
+  ]);
+}
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +34,7 @@ export class PeliculasService {
     // La ordenación se hace client-side en el componente
     let httpParams = new HttpParams();
     
-    return firstValueFrom(this.http.get<PeliculasInterface[]>(this._url, { params: httpParams }).pipe(timeout(HTTP_TIMEOUT_MS)));
+    return withTimeout(firstValueFrom(this.http.get<PeliculasInterface[]>(this._url, { params: httpParams })), HTTP_TIMEOUT_MS);
   }
 
   /**
@@ -33,7 +42,7 @@ export class PeliculasService {
    */
   async getPeliculaById(id: string | number): Promise<PeliculasInterface> {
     const urlEspecifica = `${this._url}/${id}`;
-    return firstValueFrom(this.http.get<PeliculasInterface>(urlEspecifica).pipe(timeout(HTTP_TIMEOUT_MS)));
+    return withTimeout(firstValueFrom(this.http.get<PeliculasInterface>(urlEspecifica)), HTTP_TIMEOUT_MS);
   }
 
   /**

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -49,7 +49,8 @@ export class HomePage implements OnInit {
     private peliculasService: PeliculasService,
     private settingsService: SettingsService,
     private loadingCtrl: LoadingController,
-    public photoService: PhotoService
+    public photoService: PhotoService,
+    private cdr: ChangeDetectorRef
   ) {
     addIcons({ filmOutline, personCircleOutline });
   }
@@ -73,6 +74,14 @@ export class HomePage implements OnInit {
       spinner: 'bubbles'
     });
     await loading.present();
+    this.cargando = true;
+
+    // Garantiza que el estado de carga se limpia aunque todo lo demás falle
+    const safetyTimer = setTimeout(() => {
+      this.cargando = false;
+      this.cdr.detectChanges();
+      loading.dismiss().catch(() => {});
+    }, 55000);
 
     try {
       // Cargamos el nombre del usuario para mostrar saludo personalizado
@@ -87,10 +96,12 @@ export class HomePage implements OnInit {
       this.aplicarFiltroLocal();
     } catch (error) {
       console.error('Error al cargar las películas:', error);
-      await this.mostrarError('No se pudieron cargar las películas. Revisa tu conexión.');
+      await this.mostrarError('No se pudieron cargar las películas. El servidor tardó demasiado o no está disponible.');
     } finally {
+      clearTimeout(safetyTimer);
       this.cargando = false;
-      await loading.dismiss();
+      this.cdr.detectChanges();
+      await loading.dismiss().catch(() => {});
     }
   }
 
