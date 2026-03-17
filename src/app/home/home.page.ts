@@ -47,6 +47,7 @@ export class HomePage implements OnInit {
   
   public listaDePeliculas: Peliculas[] = [];
   private listaCompleta: Peliculas[] = []; // Lista sin filtrar del servidor
+  private cargandoDatos = false;
   public terminoBusqueda: string = '';
   public ordenSeleccionado: 'recent' | 'az' | 'za' = 'recent';
   
@@ -73,6 +74,9 @@ export class HomePage implements OnInit {
 
     // No bloqueamos la carga principal por el almacenamiento local
     withTimeout(this.photoService.loadSavedPhoto(), 2000).catch(() => {});
+
+    // Fallback para web/Vercel: si ionViewWillEnter no dispara, igual cargamos datos.
+    await this.cargarDatos();
   }
 
   // Usar ionViewWillEnter en lugar de ngOnInit para recargar datos cada vez que se entra en la página
@@ -83,6 +87,11 @@ export class HomePage implements OnInit {
   }
 
   async cargarDatos() {
+    if (this.cargandoDatos) {
+      return;
+    }
+    this.cargandoDatos = true;
+
     const loading = await this.loadingCtrl.create({
       message: 'Cargando películas... (puede tardar ~30s la primera vez)',
       spinner: 'bubbles'
@@ -114,6 +123,7 @@ export class HomePage implements OnInit {
     } finally {
       clearTimeout(safetyTimer);
       this.cargando = false;
+      this.cargandoDatos = false;
       this.cdr.detectChanges();
       await loading.dismiss().catch(() => {});
     }
