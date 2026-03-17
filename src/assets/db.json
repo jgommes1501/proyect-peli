@@ -1,0 +1,452 @@
+{
+  "Peliculas": [
+    {
+      "id": "1",
+      "nombre": "Gladiator",
+      "autor": "Ridley Scott",
+      "descripcion": "El general romano Máximo...",
+      "img": "assets/images/Gladiator.png"
+    },
+    {
+      "id": "2",
+      "nombre": "Interestelar",
+      "autor": "Christopher Nolan",
+      "descripcion": " grupo de científicos y exploradores, encabezados por Cooper, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
+      "img": "assets/images/Int.jpg"
+    },
+    {
+      "id": "3",
+      "nombre": "Prisioners",
+      "autor": "Denis Villeneuve",
+      "descripcion": "Keller Dover se enfrenta a la peor pesadilla...",
+      "img": "assets/images/prisoners.jpg"
+    },
+    {
+      "id": "4",
+      "nombre": "Inception",
+      "autor": "Christopher Nolan",
+      "descripcion": "Dom Cobb es un ladrón...",
+      "img": "assets/images/Inception.jpg"
+    },
+    {
+      "id": "5",
+      "nombre": "Malditos Bastardos",
+      "autor": "Quentin Tarantino",
+      "descripcion": "Un grupo de soldados judíos busca venganza...",
+      "img": "assets/images/Malditos_bastard.jpg"
+    },
+    {
+      "id": "6",
+      "nombre": "Forrest Gump",
+      "autor": "Robert Zemeckis",
+      "descripcion": "La vida es como una caja de bombones...",
+      "img": "assets/images/Forrest_Gump.jpg"
+    },
+    {
+      "id": "7",
+      "nombre": "The Truman Show",
+      "autor": "Peter Weir",
+      "descripcion": "Un hombre descubre que su vida es un reality show...",
+      "img": "assets/images/the_truman_show.jpg"
+    },
+    {
+      "id": "8",
+      "nombre": "Coach Carter",
+      "autor": "Thomas Carter",
+      "descripcion": "Un entrenador de baloncesto de secundaria intenta transformar a sus jugadores problemáticos en un equipo exitoso.",
+      "img": "assets/images/Coach_Carter.JPG"
+    },
+    {
+      "id": "9",
+      "nombre": "Terminator 2",
+      "autor": "James Cameron",
+      "descripcion": "Un cyborg es enviado al pasado para proteger a un joven líder de la resistencia.",
+      "img": "assets/images/TERM.jpg"
+    },
+    {
+      "id": "10",
+      "nombre": "Million Dollar Baby",
+      "autor": "Clint Eastwood",
+      "descripcion": "Un entrenador de boxeo ayuda a una mujer a convertirse en campeona.",
+      "img": "assets/images/dollar.jpg"
+    },
+    {
+      "id": "11",
+      "nombre": "Seven",
+      "autor": "David Fincher",
+      "descripcion": "Dos detectives persiguen a un asesino en serie que utiliza los siete pecados capitales como modus operandi.",
+      "img": "assets/images/Seven.jpg"
+    },
+    {
+      "id": "12",
+      "nombre": "Cadena Perpetua",
+      "autor": "Frank Darabont",
+      "descripcion": "Un banquero es condenado a cadena perpetua en una prisión de máxima seguridad por el asesinato de su esposa.",
+      "img": "assets/images/CAD.jpg"
+    },
+    {
+      "id": "13",
+      "nombre": "Oldboy",
+      "autor": "Park Chan-wook",
+      "descripcion": "Un hombre es secuestrado y encarcelado durante 15 años sin razón aparente, y luego se le da la oportunidad de vengarse.",
+      "img": "assets/images/oldboy.jpg"
+    },
+    {
+      "id": "14",
+      "nombre": "El Padrino",
+      "autor": "Francis Ford Coppola",
+      "descripcion": "La historia de la familia mafiosa Corleone en Estados Unidos.",
+      "img": "assets/images/padrino.jpg"
+    },
+    {
+      "id": "15",
+      "nombre": "Alien",
+      "autor": "Ridley Scott",
+      "descripcion": "La tripulación de una nave espacial se encuentra con una forma de vida extraterrestre mortal.",
+      "img": "assets/images/Alien.webp"
+    },
+    {
+      "id": "16",
+      "nombre": "Taxi Driver",
+      "autor": "Martin Scorsese",
+      "descripcion": "Un veterano de Vietnam se convierte en un taxista solitario en Nueva York.",
+      "img": "assets/images/taxi_driver.jpg"
+    },
+    {
+      "id": "17",
+      "nombre": "Rocky",
+      "autor": "John G. Avildsen",
+      "descripcion": "Un boxeador de poca monta recibe una oportunidad inesperada para pelear por el título mundial.",
+      "img": "assets/images/rocky.jpg"
+    },
+    {
+      "id": "18",
+      "nombre": "Regreso al Futuro",
+      "autor": "Robert Zemeckis",
+      "descripcion": "Un adolescente viaja en el tiempo para asegurarse de que sus padres se conozcan.",
+      "img": "assets/images/regreso_futuro.jpg"
+    },
+    {
+      "id": "19",
+      "nombre": "El club de los poetas muertos",
+      "autor": "Peter Weir",
+      "descripcion": "Un grupo de estudiantes de una escuela preparatoria son inspirados por su nuevo profesor de inglés.",
+      "img": "assets/images/club_poeta.jpg"
+    },
+    {
+      "id": "20",
+      "nombre": "Scarface",
+      "autor": "Brian De Palma",
+      "descripcion": "Un ambicioso inmigrante cubano se convierte en un poderoso narcotraficante en Miami.",
+      "img": "assets/images/scarface.jpg"
+    },
+    {
+      "id": "21",
+      "nombre": "Pulp Fiction",
+      "autor": "Quentin Tarantino",
+      "descripcion": "Las vidas de dos asesinos a sueldo, un boxeador y la esposa de un gánster se entrelazan en esta película de culto.",
+      "img": "assets/images/pulp.jpg"
+    },
+    {
+      "id": "22",
+      "nombre": "El club de la lucha",
+      "autor": "David Fincher",
+      "descripcion": "Un grupo de hombres insatisfechos forman un club de lucha clandestino.",
+      "img": "assets/images/lucha.jpg"
+    },
+    {
+      "id": "23",
+      "nombre": "cinema_paradiso",
+      "autor": "Giuseppe Tornatore",
+      "descripcion": "Un famoso director regresa a su pueblo natal y revive su infancia y su amor por el cine.",
+      "img": "assets/images/cinema_paradiso.png"
+    },
+    {
+      "id": "24",
+      "nombre": "El pianista",
+      "autor": "Roman Polanski",
+      "descripcion": "La historia de un pianista judío que lucha por sobrevivir en Varsovia durante la Segunda Guerra Mundial.",
+      "img": "assets/images/pianista.webp"
+    },
+    {
+      "id": "25",
+      "nombre": "Matrix",
+      "autor": "Lana y Lilly Wachowski",
+      "descripcion": "Un programador informático descubre que la realidad que conoce es una simulación y se une a un grupo de rebeldes para luchar contra las máquinas.",
+      "img": "assets/images/matrix.jfif"
+    },
+    {
+      "id": "26",
+      "nombre": "El lobo de Wall Street",
+      "autor": "Martin Scorsese",
+      "descripcion": "La historia de un corredor de bolsa y su ascenso y caída en el mundo de las finanzas.",
+      "img": "assets/images/lobo.webp"
+    },
+    {
+      "id": "27",
+      "nombre": "Django sin cadenas",
+      "autor": "Quentin Tarantino",
+      "descripcion": "Un cazarrecompensas busca a una mujer secuestrada en esta película de venganza y redención.",
+      "img": "assets/images/django.jpg"
+    },
+    {
+      "id": "28",
+      "nombre": "La milla Verde",
+      "autor": "Frank Darabont",
+      "descripcion": "La historia de un hombre condenado a muerte que forma un vínculo especial con un guardia de prisión.",
+      "img": "assets/images/La_milla_verde.jpg"
+    },
+    {
+      "id": "29",
+      "nombre": "Memento",
+      "autor": "Christopher Nolan",
+      "descripcion": "Un hombre con pérdida de memoria busca venganza por la muerte de su esposa.",
+      "img": "assets/images/memento.jpg"
+    },
+    {
+      "id": "30",
+      "nombre": "The Hunt / La Caza",
+      "autor": "Thomas Vinterberg",
+      "descripcion": "Un hombre es falsamente acusado de abuso infantil en un pequeño pueblo danés.",
+      "img": "assets/images/caza.jpg"
+    },
+    {
+      "id": "32",
+      "nombre": "El Renacido",
+      "autor": "Alejandro González Iñárritu",
+      "descripcion": "La historia de un hombre que es atacado por un oso y dejado por muerto por su equipo, y que lucha por sobrevivir y vengarse.",
+      "img": "assets/images/renacido.jpg"
+    },
+    {
+      "id": "33",
+      "nombre": "El último samurái",
+      "autor": "Edward Zwick",
+      "descripcion": "1876. El capitán Nathan Algren es un hombre que vive atormentado por los recuerdos de la guerra, pero el mundo ha cambiado y el pragmatismo ha reemplazado al valor, el interés personal ha ocupado el lugar del sacrificio y el sentido del honor ha desaparecido.",
+      "img": "https://es.web.img3.acsta.net/medias/nmedia/18/67/78/13/20066706.jpg"
+    },
+    {
+      "id": "34",
+      "nombre": "El Médico",
+      "autor": " Philipp Stölzl",
+      "descripcion": "Ambientada en Inglaterra, en el siglo XI, narra la historia de Rob Cole, un joven que se queda huérfano al morir su madre víctima de una extraña enfermedad. Esta circunstancia lo anima a irse a Persia a estudiar medicina bajo la tutela del sabio doctor Ibn Sina.",
+      "img": "https://es.web.img3.acsta.net/c_310_420/pictures/210/581/21058197_20131115130548712.jpg"
+    },
+    {
+      "id": "35",
+      "nombre": "Normal People",
+      "autor": "Sally Rooney",
+      "descripcion": "Siguiendo a Marianne y Connell, de diferentes orígenes pero del mismo pequeño pueblo en Irlanda, mientras entran y salen de la vida romántica del otro y comienzan a crecer.",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdASEYA-RAQv3UychPC9Be9ceOx4byF-V68G15N6K3rvAoPex6hDw2dS79CWs1hOrvhJ098R_x263mWBV3eNLnhiBQRei0slN1nqDFEw&s=10"
+    },
+    {
+      "id": "ea34",
+      "nombre": "Burnt / Una buena receta",
+      "autor": "John Wells",
+      "descripcion": "La adicción ha llevado a Adam Jones, chef de un importante restaurante en París, a perder las dos estrellas Michelín. Caído en desgracia, se encuentra en una espiral donde todo lo que toca parece hundirse bajo sus pies. Decidido a no rendirse, coge todo su equipo de cocina y se traslada al próspero Londres.",
+      "img": "https://m.media-amazon.com/images/M/MV5BNjEzNTk2OTEwNF5BMl5BanBnXkFtZTgwNzExMTg0NjE@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "3d9d",
+      "nombre": "Formula 1",
+      "autor": "Joseph Kosinski",
+      "descripcion": "El mítico piloto Sonny Hayes vuelve de su retiro, persuadido para liderar un equipo de Fórmula 1 en apuros y guiar a su joven promesa, en busca de una nueva oportunidad de éxito.",
+      "img": "https://www.aceprensa.com/wp-content/uploads/2025/06/f1-la-pelicula-818x1024.jpg"
+    },
+    {
+      "id": "bc0c",
+      "nombre": "El y Ella",
+      "autor": "Aliece Freeney",
+      "descripcion": "es una miniserie estadounidense de suspenso y misterio protagonizada por Tessa Thompson, Jon Bernthal, Pablo Schreiber, Rebecca Rittenhouse y Sunita Mani. Es una adaptación de la novela homónima de Alice Feeney de 2020 y se estrenó en Netflix el 8 de enero de 2026.",
+      "img": "https://m.media-amazon.com/images/I/61OuB3gXfvL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "c55c",
+      "nombre": "50 Primeras citas",
+      "autor": "Peter Segal",
+      "descripcion": "Henry, biólogo marino, no tiene la mínima intención de comprometerse con nadie hasta que conoce a Lucy, la chica de sus sueños. Sin embargo, hay un pequeño problema, la joven se levanta cada mañana sin recordar absolutamente nada del día anterior.",
+      "img": "https://m.media-amazon.com/images/M/MV5BMjAwMzc4MDgxNF5BMl5BanBnXkFtZTYwNjUwMzE3._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "94ca",
+      "nombre": "Háblame",
+      "autor": "Michael Philippou, Danny Philippou",
+      "descripcion": "Cuando un grupo de amigos descubre cómo conjurar espíritus con una mano embalsamada, quedan enganchados al nuevo y emocionante juego de alto riesgo, hasta que uno de ellos va demasiado lejos y desata aterradoras fuerzas sobrenaturales.",
+      "img": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTn4hl0hsLUagCdlNfG31Nh45wXrctB66JzwgU-dFNKf3MMQMuo"
+    },
+    {
+      "id": "fbde",
+      "nombre": "Thanksgiving",
+      "autor": " Eli Roth",
+      "descripcion": "Se produce una tragedia durante la celebración de Black Friday en Plymouth, Massachusetts. Un año después, un asesino en serie empieza a matar y mutilar a los vecinos de la localidad y todo apunta a que su masacre guarda relación con lo ocurrido.",
+      "img": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6BPx7DML5hM3H1NabTxy75-EajkgEPo8WVZAyd1XwOh6pqyzc"
+    },
+    {
+      "id": "c291",
+      "nombre": "Mud",
+      "autor": "Jeff Nichols",
+      "descripcion": "En una isla del Río Misisipi, dos jóvenes amigos descubren a Mud, un fugitivo cuyas historias salvajes acerca de una mujer hermosa, el asesinato de un hombre en Texas y su persecución por parte de un cazarrecompensas, se hacen realidad.",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKllP7KKK7Z1rkTazD_mkmyDcZRdoUWXRTm5boPwneUXYYi_0rN6jYs335S_oKRXC1w4KCu0pUGE84LdeKjOFqDdheWw9Imrvh2eDCaQ&s=10"
+    },
+    {
+      "id": "bcdb",
+      "nombre": "Amor y otras Drogas",
+      "autor": "Edward Zwick",
+      "descripcion": "Maggie es una mujer independiente que ha decidido vivir sin ataduras. Pero conoce a Jamie, un joven cuyo irresistible encanto funciona no sólo con las mujeres, sino también dentro del mundo de las ventas farmacéuticas.",
+      "img": "https://m.media-amazon.com/images/I/71M0HZIsAhL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "id": "f314",
+      "nombre": "Invictus",
+      "autor": "Clint Eastwood",
+      "descripcion": "Tras ser liberado, Nelson Mandela llega a la Presidencia y decreta la abolición del Apartheid. En 1995, la celebración en Sudáfrica de la Copa Mundial de Rugby fue el instrumento empleado por el líder negro para construir la unidad nacional.",
+      "img": "https://pics.filmaffinity.com/Invictus-582873614-large.jpg"
+    },
+    {
+      "id": "2644",
+      "nombre": "El gran Gatsby",
+      "autor": "Baz Luhrmann",
+      "descripcion": "Persiguiendo su propia versión del 'sueño americano', Nick acaba siendo vecino de Jay Gatsby, un misterioso millonario que constantemente da fiestas. Al otro lado de la bahía vive la prima de Nick, Daisy, y su mujeriego y aristócrata marido.",
+      "img": "https://es.web.img3.acsta.net/pictures/14/06/04/13/09/206777.jpg"
+    },
+    {
+      "id": "172a",
+      "nombre": "Marty Supreme",
+      "autor": "Josh Safdie",
+      "descripcion": "Marty Supreme es una película estadounidense de comedia dramática deportiva de 2025, producida y dirigida por Josh Safdie, quien la coescribió con Ronald Bronstein, inspirada libremente en el jugador de tenis de mesa estadounidense Marty Reisman.​​",
+      "img": "https://m.media-amazon.com/images/M/MV5BZTRhYjI1MTItMWYwMi00MjY5LWI1OTktMzQwNzA3MWJlN2QyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "526c",
+      "nombre": "Hamnet",
+      "autor": "Chloé Zhao",
+      "descripcion": "Hamnet es una película de drama histórico de 2025 dirigido por la cineasta Chloé Zhao y coescrito junto a Maggie O'Farrell, basado en la novela homónima de 2020 escrita por la propia O'Farrell. ",
+      "img": "https://m.media-amazon.com/images/M/MV5BMDQ5ZmY0OWYtOTYzZi00Mzg5LWE3N2EtMjYwZTAzZmJhYjkyXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "id": "8a62",
+      "nombre": "Sinners",
+      "autor": "Ryan Coogler",
+      "descripcion": "Tratando de dejar atrás sus problemáticas vidas, dos hermanos gemelos regresan a su pueblo natal para empezar de nuevo, solo para descubrir que un mal aún mayor los espera para darles la bienvenida.",
+      "img": "https://pics.filmaffinity.com/sinners-306242848-mmed.jpg"
+    },
+    {
+      "id": "a80e",
+      "nombre": "Zodiac",
+      "autor": "David Fincher",
+      "descripcion": "En los años sesenta y setenta, un asesino en serie se burla de la policía y los medios de comunicación enviándoles cartas y mensajes encriptados. Los investigadores de la policía y reporteros del periódico se obsesionan con el hecho de encontrar al elusivo asesino en serie.",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKi1OYGA8L8s4-xQtNQ5cGMGJvzDv7wQLFJ6aXJn2XNSbniXF45hCmu_BJQmyyoU-etyDCv_y-Z-3oWN3HoYDvKiyxn-av6RsnnAWgfQ&s=10"
+    },
+    {
+      "id": "57a6",
+      "nombre": "El efecto mariposa",
+      "autor": "Eric Bress, J. Mackye Gruber",
+      "descripcion": "Evan Treborn es un joven que se está esforzando por superar unos dolorosos recuerdos de su infancia. Un día descubre una técnica que le permite viajar atrás en el tiempo para poder cambiar el curso de su traumática historia.",
+      "img": "https://pics.filmaffinity.com/El_efecto_mariposa-370563071-large.jpg"
+    },
+    {
+      "id": "a2d7",
+      "nombre": "Beautiful Boy: Siempre serás mi hijo",
+      "autor": "Felix van Groeningen",
+      "descripcion": "Crónica sobre la adicción a la metanfetamina de un chico adolescente y sus intentos por salir de la droga. Una mirada a través de los ojos de su padre, que observa impotente a su hijo mientras lucha contra la enfermedad de la drogodependencia.",
+      "img": "https://pics.filmaffinity.com/beautiful_boy-627676487-large.jpg"
+    },
+    {
+      "id": "46bd",
+      "nombre": "Love Actually",
+      "autor": "Richard Curtis",
+      "descripcion": "Las vidas de varias parejas se entrecruzan en Londres, poco antes de las fiestas de Navidad, con resultados románticos, divertidos y agridulces.",
+      "img": "https://play-lh.googleusercontent.com/bzkmhEBNALaslGrwHRg0HqdICCkX8gNXQwzfoT9x0_8DV3Th83BdzooVy4W1K1xKxlkt"
+    },
+    {
+      "id": "ca27",
+      "nombre": "Una batalla tras otra",
+      "autor": "Paul Thomas Anderson",
+      "descripcion": "Una batalla tras otra es una película estadounidense de 2025 dirigida y escrita por Paul Thomas Anderson y basada en la novela Vineland del escritor estadounidense Thomas Pynchon.",
+      "img": "https://pics.filmaffinity.com/Una_batalla_tras_otra-273630517-large.jpg"
+    },
+    {
+      "id": "2c04",
+      "nombre": "Weapons",
+      "autor": "Zach Cregger",
+      "descripcion": "Cuando todos los niños de una clase se desvanecen misteriosamente, la misma noche y exactamente a la misma hora, toda una comunidad se pregunta quién o qué ha provocado esta desaparición.",
+      "img": "https://pics.filmaffinity.com/Weapons-756591723-large.jpg"
+    },
+    {
+      "id": "dd29",
+      "nombre": "Resacon en la Vegas",
+      "autor": "Todd Phillips",
+      "descripcion": "Cuatro amigos celebran la despedida de soltero de uno de ellos en Las Vegas. Pero, cuando a la mañana siguiente no pueden encontrar al novio y no recuerdan nada, deberán intentar volver sobre sus pasos, antes de que llegue la hora de la boda.",
+      "img": "https://m.media-amazon.com/images/I/91Y9a3erPtL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "id": "3422",
+      "nombre": "12 años de exclavitud",
+      "autor": "Steve McQueen",
+      "descripcion": "Basada en un hecho real ocurrido en 1850, narra la historia de Solomon Northup, un culto músico negro que vivía con su familia en Nueva York.",
+      "img": "https://pics.filmaffinity.com/12_aanos_de_esclavitud-305655779-large.jpg"
+    },
+    {
+      "id": "cf56",
+      "nombre": "¿A quién ama Gilbert Grape?",
+      "autor": "Lasse Hallström",
+      "descripcion": "En Endora, un pequeño pueblo del Medio Oeste americano, vive Gilbert Grape, un joven empleado de una tienda de ultramarinos cuya vida es cuidar de una madre inmensamente obesa y de un hermano con discapacidad mental.",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK_93CSVzbQbm9xYigRpTZahDJukRt0OkU6H5VFlgBN_ECj3ax7anC6I4nwmOo_9pcKpeJcOlPwtGxdNf-0LAcxNc20Kkx919ZQW40nQ&s=10"
+    },
+    {
+      "id": "fef4",
+      "nombre": "Happy Gilmore",
+      "autor": "Dennis Dugan",
+      "descripcion": "Happy Gilmore trata de hacerse profesional de hockey pero carece del talento necesario. Cuando descubre que su abuela adeuda 270.000 dólares, Gilmore demostrará en un torneo su habilidad en el golf gracias a su potente swing.",
+      "img": "https://m.media-amazon.com/images/M/MV5BMzMyZTM1MTMtNDdjOS00NzIzLTkxY2QtZTU4OGYxOTUwNDMxXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "id": "2664",
+      "nombre": "Yo, Robot",
+      "autor": "Alex Proyas",
+      "descripcion": "En el año 2035, los robots son parte de la vida cotidiana. Cuando la confianza en ellos se rompe, sólo un hombre contra todo el sistema lo ve venir.",
+      "img": "https://m.media-amazon.com/images/M/MV5BOGRjOWM3MzktZjEyOS00Zjk4LTlhODMtYTk4N2QyMTZmNmM4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "6e48",
+      "nombre": "Soy Leyenda",
+      "autor": "Francis Lawrence",
+      "descripcion": "Año 2012. Robert Neville es un brillante científico, que, sin embargo, no ha podido impedir la expansión de un incurable virus creado por el hombre. Neville, inexplicablemente inmune al contagio, es el último superviviente humano de la ciudad de Nueva York y, quizá, del mundo. Pero Neville no está completamente solo.",
+      "img": "https://play-lh.googleusercontent.com/6Oz3lpsE6Oyh2qIQDUOBixxcIXQKiRsbvfdOvULqImGiU1hfakMJ8ubsn82dmHpHbyQ"
+    },
+    {
+      "id": "d91c",
+      "nombre": "En busca de la felicidad",
+      "autor": "Gabriele Muccino",
+      "descripcion": "Chris Gradner es un hombre que, decidido a dar una vida mejor a su familia, inicia un negocio que no acaba bien. Chris se queda en paro, su mujer le abandona y le quitan la casa. Este padre soltero tendrá que luchar por una vida mejor para su hijo.",
+      "img": "https://play-lh.googleusercontent.com/g7n_yhtLFqtTL2qVcuQk6h6e8RQ2uhF0SFyMFycVvH6sDfZRbvJv8DhwF3DkI9sDWKvcpQ=w240-h480-rw"
+    },
+    {
+      "id": "b9b3",
+      "nombre": "Yes Man",
+      "autor": "Peyton Reed",
+      "descripcion": "Carl Allen es un hombre que muestra una tendencia enfermiza a decir siempre no, hasta que se inscribe en un programa de autoayuda basado en una única condición: decir que sí a todo. Su vida empieza a transformarse de forma sorprendente e inesperada.",
+      "img": "https://m.media-amazon.com/images/M/MV5BZWQ4YzBiMzgtM2ZhZC00ZDQ5LWFiZjgtNmFlNzZlMTBkZTJhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "id": "ade0",
+      "nombre": "Southpaw",
+      "autor": "Antoine Fuqua",
+      "descripcion": "El boxeador Billy Hope se convirtió en toda una estrella gracias a su sensacional técnica y el apoyo de su mujer Maureen. Sin embargo, una tragedia hace que todo cambie y Billy se encuentra en lo más bajo. Su amigo y representante lo abandona y Billy cae en la desgracia.",
+      "img": "https://resizing.flixster.com/0Wk_H_yjMoycjcEJCFBtUgTiHUo=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p11447189_p_v10_aj.jpg"
+    },
+    {
+      "id": "0421",
+      "nombre": "Guerra Mundial Z",
+      "autor": "Marc Forster",
+      "descripcion": "Cuando una pandemia de zombis amenaza con destruir a la humanidad, un ex-investigador de Naciones Unidas es obligado a regresar al servicio para intentar descubrir la fuente de la infección.",
+      "img": "https://m.media-amazon.com/images/M/MV5BYWU4YmEzOWYtMzhjYS00OTc3LWIxNGEtZTAxYjk4M2YzNzJhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Jaime",
+      "rol": "admin"
+    }
+  ]
+}
