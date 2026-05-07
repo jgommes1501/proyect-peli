@@ -1,0 +1,6 @@
+URL de politica de privacidad (para Google Play Console):
+https://TU-USUARIO.github.io/proyect-peli/privacy-policy.html
+
+Nota:
+- Sustituye TU-USUARIO por tu usuario real de GitHub.
+- Puedes generar el texto legal con un generador de politicas y publicarlo en GitHub Pages o Google Docs publico.

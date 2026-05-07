@@ -1,0 +1,28 @@
+TITULO (max 30 caracteres)
+Proyect Peli: Cine y Lista
+
+DESCRIPCION BREVE (max 80 caracteres)
+Organiza peliculas, usa camara y GPS, y comparte tu coleccion al instante.
+
+DESCRIPCION COMPLETA (max 4000 caracteres)
+Proyect Peli es una app para organizar y gestionar tu coleccion de peliculas de forma simple, rapida y visual.
+
+Con Proyect Peli puedes:
+- Crear, editar y eliminar peliculas de tu lista personal.
+- Guardar titulo, autor/director, descripcion e imagen.
+- Usar la camara del movil para actualizar tu foto de perfil.
+- Obtener tu ubicacion GPS y abrirla directamente en Google Maps.
+- Compartir peliculas con otras personas usando el menu de compartir nativo.
+- Recibir respuesta haptica en acciones clave para mejorar la experiencia.
+
+Funciones destacadas:
+- Interfaz clara y optimizada para movil.
+- Soporte para funcionalidades nativas con Capacitor.
+- Flujo rapido para anadir contenido y encontrarlo despues.
+- Preparada para despliegue Android con App Bundle firmado (AAB).
+
+Palabras clave:
+peliculas, catalogo de peliculas, lista de peliculas, app de cine, organizador de peliculas, camara, GPS, compartir.
+
+Politica de privacidad (URL):
+https://TU-USUARIO.github.io/proyect-peli/privacy-policy.html

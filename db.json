@@ -379,13 +379,6 @@
       "img": "https://m.media-amazon.com/images/I/91Y9a3erPtL._AC_UF894,1000_QL80_.jpg"
     },
     {
-      "id": "3422",
-      "nombre": "12 años de exclavitud",
-      "autor": "Steve McQueen",
-      "descripcion": "Basada en un hecho real ocurrido en 1850, narra la historia de Solomon Northup, un culto músico negro que vivía con su familia en Nueva York.",
-      "img": "https://pics.filmaffinity.com/12_aanos_de_esclavitud-305655779-large.jpg"
-    },
-    {
       "id": "cf56",
       "nombre": "¿A quién ama Gilbert Grape?",
       "autor": "Lasse Hallström",
@@ -448,5 +441,6 @@
       "nombre": "Jaime",
       "rol": "admin"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
